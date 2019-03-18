@@ -1,1 +1,2 @@
-/home/sarnold/Development/repos/collective.frontpage/requirements.txt
+setuptools==38.2.4
+zc.buildout==2.11.4

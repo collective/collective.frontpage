@@ -1,1 +1,4 @@
-/home/sarnold/Development/repos/collective.frontpage/MANIFEST.in
+graft src/collective
+graft docs
+include *.rst
+global-exclude *.pyc

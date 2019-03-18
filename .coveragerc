@@ -1,1 +1,6 @@
-/home/sarnold/Development/repos/collective.frontpage/.coveragerc
+[report]
+include =
+    src/collective/*
+omit =
+    */test*
+    */upgrades/*
