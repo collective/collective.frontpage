@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="collective.frontpage">
+
+    <!-- -*- extra stuff goes here -*- -->
+
+    <utility
+        component=".section_types.SectionTypesFactory"
+        name="collective.frontpage.SectionTypes"
+    />
+
+
+</configure>
