@@ -5,6 +5,12 @@
     <!-- -*- extra stuff goes here -*- -->
 
     <utility
+        component=".section_background_colors.SectionBackgroundColorsFactory"
+        name="collective.frontpage.SectionBackgroundColors"
+    />
+
+
+    <utility
         component=".section_types.SectionTypesFactory"
         name="collective.frontpage.SectionTypes"
     />
