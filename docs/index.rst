@@ -1,5 +1,0 @@
-====================
-collective.frontpage
-====================
-
-User documentation

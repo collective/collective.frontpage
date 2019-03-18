@@ -1,9 +1,1 @@
-Changelog
-=========
-
-
-1.0a1 (unreleased)
-------------------
-
-- Initial release.
-  [sarn0ld]
+/home/sarnold/Development/repos/collective.frontpage/CHANGES.rst

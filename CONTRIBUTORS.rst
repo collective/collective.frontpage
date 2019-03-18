@@ -1,4 +1,1 @@
-Contributors
-============
-
-- Stefan Arnold, stefan.arnold@operun.de
+/home/sarnold/Development/repos/collective.frontpage/CONTRIBUTORS.rst
