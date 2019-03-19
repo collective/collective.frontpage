@@ -17,7 +17,7 @@ class ISection(model.Schema):
     Marker interface and Dexterity Python Schema for Section
     """
 
-    type = schema.Choice(
+    section_type = schema.Choice(
         title=_(u'Type'),
         default='static',
         vocabulary='collective.frontpage.SectionTypes',
