@@ -36,7 +36,7 @@ Test Teardown  Close all browsers
 
 Scenario: As a site administrator I can add a Section
   Given a logged-in site administrator
-    and an add Frontpage form
+    and an add Section form
    When I type 'My Section' into the title field
     and I submit the form
    Then a Section with the title 'My Section' has been created
@@ -58,8 +58,13 @@ a logged-in site administrator
 an add Frontpage form
   Go To  ${PLONE_URL}/++add++Frontpage
 
+an add Section form
+  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
+  Go To  ${PLONE_URL}/my-frontpage/++add++Section
+
 a Section 'My Section'
-  Create content  type=Frontpage  id=my-section  title=My Section
+  ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
+  Create content  type=Section  container=${uid}  id=my-section  title=My Section
 
 # --- WHEN -------------------------------------------------------------------
 
@@ -70,7 +75,7 @@ I submit the form
   Click Button  Save
 
 I go to the Section view
-  Go To  ${PLONE_URL}/my-section
+  Go To  ${PLONE_URL}/my-frontpage/my-section
   Wait until page contains  Site Map
 
 

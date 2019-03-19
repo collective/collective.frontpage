@@ -36,7 +36,7 @@ Test Teardown  Close all browsers
 
 Scenario: As a site administrator I can add a Item
   Given a logged-in site administrator
-    and an add Section form
+    and an add Item form
    When I type 'My Item' into the title field
     and I submit the form
    Then a Item with the title 'My Item' has been created
@@ -55,11 +55,15 @@ Scenario: As a site administrator I can view a Item
 a logged-in site administrator
   Enable autologin as  Site Administrator
 
-an add Section form
-  Go To  ${PLONE_URL}/++add++Section
+an add Item form
+  ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
+  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  Go To  ${PLONE_URL}/my-frontpage/my-section/++add++Item
 
 a Item 'My Item'
-  Create content  type=Section  id=my-item  title=My Item
+  ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
+  ${uid} =  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  Create content  type=Item  container=${uid}  id=my-item  title=My Item
 
 # --- WHEN -------------------------------------------------------------------
 
@@ -70,7 +74,7 @@ I submit the form
   Click Button  Save
 
 I go to the Item view
-  Go To  ${PLONE_URL}/my-item
+  Go To  ${PLONE_URL}/my-frontpage/my-section/my-item
   Wait until page contains  Site Map
 
 
