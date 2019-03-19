@@ -28,4 +28,12 @@
      />
 
 
+  <browser:page
+      name="view"
+      for="collective.frontpage.content.section.ISection"
+      permission="zope2.View"
+      class=".section.SectionView"
+      />
+
+
 </configure>
