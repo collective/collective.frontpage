@@ -17,14 +17,14 @@ class ISection(model.Schema):
     Marker interface and Dexterity Python Schema for Section
     """
 
-    background_type = schema.Choice(
+    type = schema.Choice(
         title=_(u'Type'),
         default='static',
         vocabulary='collective.frontpage.SectionTypes',
         required=True,
     )
 
-    color = schema.Choice(
+    background_color = schema.Choice(
         title=_(u'Background Color'),
         default='#0083BE',
         vocabulary='collective.frontpage.SectionBackgroundColors',
