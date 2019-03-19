@@ -1,0 +1,3 @@
+<div metal:define-macro="frontpage_section_static">
+  <p>${section/title}</p>
+</div>

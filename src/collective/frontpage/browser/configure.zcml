@@ -36,4 +36,11 @@
       />
 
 
+    <browser:page
+        name="frontpage_macros"
+        for="*"
+        template="templates/frontpage_macros.pt"
+        permission="zope2.View"
+        />
+
 </configure>

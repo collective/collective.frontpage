@@ -2,17 +2,22 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="collective.frontpage"
-      metal:use-macro="context/main_template/macros/master">
+   i18n:domain="collective.frontpage"
+   metal:use-macro="context/main_template/macros/master">
 <body>
-    <metal:block fill-slot="content-core">
-      <div class="heading">
-        <li i18n:translate="">
-          Sample View
-        </li>
-      <span tal:content="view/msg">this gets replaced</span>
-      </div>
-    </metal:block>
+<metal:block fill-slot="content-core">
+  <div class="heading">
+    <li i18n:translate="">
+      Sample View
+    </li>
+    <span tal:content="view/msg">this gets replaced</span>
+  </div>
 
-<body>
+  <div>
+    <tal:repeat tal:repeat="section context/listFolderContents">
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"></div>
+    </tal:repeat>
+  </div>
+</metal:block>
+</body>
 </html>
