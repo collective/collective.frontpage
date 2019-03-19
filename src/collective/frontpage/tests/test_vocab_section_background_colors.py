@@ -26,7 +26,12 @@ class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
 
         vocabulary = factory(self.portal)
         self.assertTrue(IVocabularyTokenized.providedBy(vocabulary))
+
         self.assertEqual(
-            vocabulary.getTerm('sony-a7r-iii').title,
-            _(u'Sony Aplha 7R III'),
+            vocabulary.getTerm(u'#0083BE').title,
+            _(u'Plone Blue'),
+        )
+        self.assertEqual(
+            vocabulary.getTerm(u'#F5F5F5').title,
+            _(u'Dirty White'),
         )

@@ -26,7 +26,15 @@ class SectionTypesIntegrationTest(unittest.TestCase):
 
         vocabulary = factory(self.portal)
         self.assertTrue(IVocabularyTokenized.providedBy(vocabulary))
+
+        # VocabItem(u'welcome', _(u'Welcome Section')),
+        # VocabItem(u'teaser', _(u'Teaser Section')),
+        # VocabItem(u'static', _(u'Static Section')),
+        # VocabItem(u'news', _(u'News Section')),
+        # VocabItem(u'tiles', _(u'Tiles Section')),
+        # VocabItem(u'search', _(u'Search Section')),
+
         self.assertEqual(
-            vocabulary.getTerm('sony-a7r-iii').title,
-            _(u'Sony Aplha 7R III'),
+            vocabulary.getTerm(u'welcome').title,
+            _(u'Welcome Section'),
         )

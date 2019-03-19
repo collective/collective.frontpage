@@ -18,15 +18,15 @@ class VocabItem(object):
 
 @implementer(IVocabularyFactory)
 class SectionTypes(object):
-    """
-    """
 
     def __call__(self, context):
-        # Just an example list of content for our vocabulary,
-        # this can be any static or dynamic data, a catalog result for example.
         items = [
-            VocabItem(u'sony-a7r-iii', _(u'Sony Aplha 7R III')),
-            VocabItem(u'canon-5d-iv', _(u'Canon 5D IV')),
+            VocabItem(u'welcome', _(u'Welcome Section')),
+            VocabItem(u'teaser', _(u'Teaser Section')),
+            VocabItem(u'static', _(u'Static Section')),
+            VocabItem(u'news', _(u'News Section')),
+            VocabItem(u'tiles', _(u'Tiles Section')),
+            VocabItem(u'search', _(u'Search Section')),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.

@@ -22,11 +22,13 @@ class SectionBackgroundColors(object):
     """
 
     def __call__(self, context):
-        # Just an example list of content for our vocabulary,
-        # this can be any static or dynamic data, a catalog result for example.
+        # TODO: Get from colors and list_to_dict()
+        # ldap_objectclass_mapping = api.portal.get_registry_record(
+        #   name='operun.crm.ldap_objectclass_mapping')  # noqa
+
         items = [
-            VocabItem(u'sony-a7r-iii', _(u'Sony Aplha 7R III')),
-            VocabItem(u'canon-5d-iv', _(u'Canon 5D IV')),
+            VocabItem(u'#0083BE', u'Plone Blue',),
+            VocabItem(u'#F5F5F5', u'Dirty White'),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.
@@ -45,8 +47,14 @@ class SectionBackgroundColors(object):
                     title=item.value,
                 )
             )
-        # Create a SimpleVocabulary from the terms list and return it:
+
+
         return SimpleVocabulary(terms)
 
+    def list_to_dict(self, list_of_items):
+        """
+        Converts list mappings into dict.
+        """
+        return dict(item.split('|') for item in list_of_items)
 
 SectionBackgroundColorsFactory = SectionBackgroundColors()
