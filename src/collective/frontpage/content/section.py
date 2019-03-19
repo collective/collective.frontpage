@@ -9,49 +9,44 @@ from z3c.form.browser.radio import RadioFieldWidget
 from zope import schema
 from zope.interface import implementer
 from collective.frontpage import _
+from plone.namedfile.field import NamedBlobImage
 
 
 class ISection(model.Schema):
-    """ Marker interface and Dexterity Python Schema for Section
+    """
+    Marker interface and Dexterity Python Schema for Section
     """
 
-    # directives.widget(level=RadioFieldWidget)
-    # level = schema.Choice(
-    #     title=_(u'Sponsoring Level'),
-    #     vocabulary=LevelVocabulary,
-    #     required=True
-    # )
+    section_type = schema.Choice(
+        title=_(u'Type'),
+        default='static',
+        vocabulary='collective.frontpage.SectionTypes',
+        required=True,
+    )
 
-    # text = RichText(
-    #     title=_(u'Text'),
-    #     required=False
-    # )
+    background_color = schema.Choice(
+        title=_(u'Background Color'),
+        default='#0083BE',
+        vocabulary='collective.frontpage.SectionBackgroundColors',
+        required=True,
+    )
 
-    # url = schema.URI(
-    #     title=_(u'Link'),
-    #     required=False
-    # )
+    background_image = NamedBlobImage(
+        title=_(u'Background Image'),
+        required=False,
+    )
 
-    # fieldset('Images', fields=['logo', 'advertisement'])
-    # logo = namedfile.NamedBlobImage(
-    #     title=_(u'Logo'),
-    #     required=False,
-    # )
+    link_url = schema.URI(
+        title=_(u'Link'),
+        required=False,
+    )
 
-    # advertisement = namedfile.NamedBlobImage(
-    #     title=_(u'Advertisement (Gold-sponsors and above)'),
-    #     required=False,
-    # )
-
-    # directives.read_permission(notes='cmf.ManagePortal')
-    # directives.write_permission(notes='cmf.ManagePortal')
-    # notes = RichText(
-    #     title=_(u'Secret Notes (only for site-admins)'),
-    #     required=False
-    # )
+    link_title = schema.TextLine(
+        title=_(u'Linktitle'),
+        required=False,
+    )
 
 
-@implementer(ISection)
 class Section(Container):
-    """
-    """
+
+    pass
