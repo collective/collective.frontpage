@@ -1,0 +1,21 @@
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
+      i18n:domain="collective.frontpage"
+      lang="en">
+
+<body>
+  <metal:main fill-slot="main">
+    <h1 style="${view/set_color}" tal:content="context/CreationDate"></h1>
+
+    <ul>
+      <tal:repeat tal:repeat="item view/request/__dict__">
+        <li><span style="${view/set_color}">form_item_${repeat/item/index} ${item}</span>: ${python:view.request.__dict__[item]}</li>
+      </tal:repeat>
+    </ul>
+  </metal:main>
+</body>
+
+</html>
