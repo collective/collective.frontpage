@@ -1,3 +1,8 @@
-<div metal:define-macro="frontpage_section_static">
-  <p>${section/title}</p>
+<div class="frontpage-section" style="background: ${section/background_color}" metal:define-macro="frontpage_section_static">
+  <h2 class="fp-title">${section/title}</h2>
+  <p>${section/description}</p>
+  <p>${section/section_type}</p>
+  <p>${section/background_color}</p>
+  <p>${section/background_image}</p>
+  <a href="${section/link_url}">${section/link_title}</a>
 </div>

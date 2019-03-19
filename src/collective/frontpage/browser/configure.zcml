@@ -12,12 +12,9 @@
       />
 
   <!-- Publish static files -->
-  <plone:static
-      name="collective.frontpage"
-      type="plone"
-      directory="static"
-      />
-
+  <browser:resourceDirectory
+  name="collective.frontpage"
+  directory="static" />
 
   <!-- Custom Browser Views -->
   <browser:page

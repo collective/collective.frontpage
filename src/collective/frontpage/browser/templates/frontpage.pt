@@ -4,6 +4,16 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
    i18n:domain="collective.frontpage"
    metal:use-macro="context/main_template/macros/master">
+
+<head>
+    <metal:block fill-slot="style_slot">
+        <link rel="stylesheet" type="text/css"
+            tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+            tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css"
+            />
+    </metal:block>
+</head>
+
 <body>
 <metal:block fill-slot="content-core">
   <div class="heading">
@@ -15,7 +25,7 @@
 
   <div>
     <tal:repeat tal:repeat="section context/listFolderContents">
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"></div>
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
     </tal:repeat>
   </div>
 </metal:block>
