@@ -18,4 +18,14 @@
       directory="static"
       />
 
+
+  <!-- Custom Browser Views -->
+  <browser:page
+     name="view"
+     for="collective.frontpage.content.frontpage.IFrontpage"
+     class=".frontpage.Frontpage"
+     permission="zope2.View"
+     />
+
+
 </configure>
