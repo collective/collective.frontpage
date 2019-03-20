@@ -1,8 +1,17 @@
-<div class="frontpage-section" style="background: ${section/background_color}" metal:define-macro="frontpage_section_static">
-  <h2 class="fp-title">${section/title}</h2>
-  <p>${section/description}</p>
-  <p>${section/section_type}</p>
-  <p>${section/background_color}</p>
-  <p>${section/background_image}</p>
-  <a href="${section/link_url}">${section/link_title}</a>
+<div class="frontpage-section"
+     style="background-image: url(${section/absolute_url}/@@images/background_image)"
+     metal:define-macro="frontpage_section_static">
+
+  <div>
+    <div class="section-content" style="background-color: ${section/background_color}">
+      <h2 class="section-title" style="color: ${python: view.text_color()};">${section/title}</h2>
+      <p class="section-description" style="color: ${python: view.text_color()}; opacity: 0.6;">${section/description}</p>
+      <a href="${section/link_url}"
+         class="section-link"
+         style="background-color: ${section/primary_color}; color: ${python: view.button_text_color()}">
+        ${section/link_title}
+      </a>
+    </div>
+  </div>
+
 </div>

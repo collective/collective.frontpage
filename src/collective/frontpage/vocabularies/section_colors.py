@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# from plone import api
 from collective.frontpage import _
 from plone.dexterity.interfaces import IDexterityContent
 from zope.globalrequest import getRequest
@@ -17,22 +16,21 @@ class VocabItem(object):
 
 
 @implementer(IVocabularyFactory)
-class SectionBackgroundColors(object):
-    """
-    """
+class SectionColors(object):
 
     def __call__(self, context):
         # TODO: Get from colors and list_to_dict()
         # ldap_objectclass_mapping = api.portal.get_registry_record(
-        #   name='operun.crm.ldap_objectclass_mapping')  # noqa
+        #   name='operun.crm.ldap_objectclass_mapping')
 
         items = [
             VocabItem(u'#0083BE', u'Plone Blue',),
             VocabItem(u'#F5F5F5', u'Dirty White'),
+            VocabItem(u'#88000000', u'Semi Transparent'),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.
-        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # NOQA: 501
+        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # noqa: 501
         if not IDexterityContent.providedBy(context):
             req = getRequest()
             context = req.PARENTS[0]
@@ -48,7 +46,6 @@ class SectionBackgroundColors(object):
                 )
             )
 
-
         return SimpleVocabulary(terms)
 
     def list_to_dict(self, list_of_items):
@@ -57,4 +54,5 @@ class SectionBackgroundColors(object):
         """
         return dict(item.split('|') for item in list_of_items)
 
-SectionBackgroundColorsFactory = SectionBackgroundColors()
+
+SectionColorsFactory = SectionColors()

@@ -27,7 +27,15 @@ class ISection(model.Schema):
     background_color = schema.Choice(
         title=_(u'Background Color'),
         default='#0083BE',
-        vocabulary='collective.frontpage.SectionBackgroundColors',
+        vocabulary='collective.frontpage.SectionColors',
+        required=True,
+    )
+
+    primary_color = schema.Choice(
+        title=_(u'Primary Color'),
+        default='#0083BE',
+        description=_(u'Color for Icons and Buttons'),
+        vocabulary='collective.frontpage.SectionColors',
         required=True,
     )
 
