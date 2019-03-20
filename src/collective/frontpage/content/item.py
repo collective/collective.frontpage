@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from collective.frontpage import _
 from plone.dexterity.content import Item
+from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope import schema
-from plone.namedfile.field import NamedBlobImage
-from collective.frontpage import _
 
 
 class IItem(model.Schema):
