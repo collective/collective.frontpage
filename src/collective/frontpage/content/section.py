@@ -2,8 +2,8 @@
 
 from plone.dexterity.content import Container
 from plone.supermodel import model
-from zope import schema
 from collective.frontpage import _
+from zope import schema
 from plone.namedfile.field import NamedBlobImage
 
 
