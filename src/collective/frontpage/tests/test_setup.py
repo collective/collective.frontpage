@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
+
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 
 import unittest
 
