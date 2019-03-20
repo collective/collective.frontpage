@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from plone.app.textfield import RichText
 from plone.dexterity.content import Item
 from plone.supermodel import model
 from zope import schema
-from zope.interface import implementer
 from plone.namedfile.field import NamedBlobImage
 from collective.frontpage import _
 
