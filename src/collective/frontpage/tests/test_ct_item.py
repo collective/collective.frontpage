@@ -5,7 +5,6 @@ from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTIN
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
-from plone.dexterity.interfaces import IDexterityItem
 from plone.dexterity.interfaces import IDexterityFTI
 from zope.component import createObject
 from zope.component import queryUtility
@@ -17,7 +16,7 @@ try:
     from plone.dexterity.schema import portalTypeToSchemaName
 except ImportError:
     # Plone < 5
-    from plone.dexterity.utils import portalTypeToSchemaName
+    from plone.dexterity.utils import portalTypeToSchemaName  # noqa: F401
 
 
 class ItemIntegrationTest(unittest.TestCase):

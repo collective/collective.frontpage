@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from collective.frontpage.content.frontpage import IFrontpage  # NOQA E501
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa
+
+from collective.frontpage.content.frontpage import IFrontpage  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
 from plone.api.exc import InvalidParameterError
 from plone.app.testing import setRoles
@@ -16,7 +17,7 @@ try:
     from plone.dexterity.schema import portalTypeToSchemaName
 except ImportError:
     # Plone < 5
-    from plone.dexterity.utils import portalTypeToSchemaName
+    from plone.dexterity.utils import portalTypeToSchemaName  # noqa: F401
 
 
 class FrontpageIntegrationTest(unittest.TestCase):
@@ -81,7 +82,7 @@ class FrontpageIntegrationTest(unittest.TestCase):
             self.portal,
             'frontpage_id',
             title='Frontpage container',
-         )
+        )
         self.parent = self.portal[parent_id]
         with self.assertRaises(InvalidParameterError):
             api.content.create(
