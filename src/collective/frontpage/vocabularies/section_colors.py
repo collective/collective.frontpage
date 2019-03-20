@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage import _
 from plone.dexterity.interfaces import IDexterityContent
 from zope.globalrequest import getRequest
 from zope.interface import implementer
@@ -19,7 +18,7 @@ class VocabItem(object):
 class SectionColors(object):
 
     def __call__(self, context):
-        # TODO: Get from colors and list_to_dict()
+        # TODO: Get from colors and list_to_dict()  # noqa: T000
         # ldap_objectclass_mapping = api.portal.get_registry_record(
         #   name='operun.crm.ldap_objectclass_mapping')
 
