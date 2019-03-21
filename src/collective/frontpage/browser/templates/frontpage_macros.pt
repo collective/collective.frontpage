@@ -1,14 +1,16 @@
 <div class="frontpage-section"
+     tal:define="image python:section.get('background_image', None)"
+     tal:attributes="style python:'background-image: url(' + section.absolute_url() +'@@images/background_image)' if image else ''"
      style="background-image: url(${section/absolute_url}/@@images/background_image)"
      metal:define-macro="frontpage_section_static">
 
   <div>
     <div class="section-content" style="background-color: ${section/background_color}">
-      <h2 class="section-title" style="color: ${python: view.text_color()};">${section/title}</h2>
-      <p class="section-description" style="color: ${python: view.text_color()}; opacity: 0.6;">${section/description}</p>
+      <h2 class="section-title" style="color: ${python: view.text_color(section)};">${section/title}</h2>
+      <p class="section-description" style="color: ${python: view.text_color(section)}; opacity: 0.6;">${section/description}</p>
       <a href="${section/link_url}"
          class="section-link"
-         style="background-color: ${section/primary_color}; color: ${python: view.button_text_color()}">
+         style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}">
         ${section/link_title}
       </a>
     </div>
