@@ -1,3 +1,16 @@
+.frontpage-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.section-content {
+  text-align: center;
+  padding-bottom: 88px;
+  padding-top: 160px;
+  background-origin: padding-box, padding-box;
+}
+
 .section-title {
   font-size: 56px;
   font-weight: 700;
@@ -41,12 +54,6 @@
   flex-direction: column;
 }
 
-.frontpage-section {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .section-link {
   border-bottom-left-radius: 160px;
   border-bottom-right-radius: 160px;
@@ -71,13 +78,6 @@
   vertical-align: middle;
   -moz-user-select: none;
   border-bottom: 0 !important;
-}
-
-.section-content {
-  text-align: center;
-  padding-bottom: 88px;
-  padding-top: 160px;
-  background-origin: padding-box, padding-box;
 }
 
 .section-link:hover {

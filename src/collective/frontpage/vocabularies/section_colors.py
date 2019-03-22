@@ -25,7 +25,12 @@ class SectionColors(object):
         items = [
             VocabItem(u'#0083BE', u'Plone Blue',),
             VocabItem(u'#F5F5F5', u'Dirty White'),
-            VocabItem(u'#88000000', u'Semi Transparent'),
+            VocabItem(u'rgba(0,0,0,1)', u'None'),
+            VocabItem(u'rgb(255,0,0)', u'Red'),
+            VocabItem(u'rgba(0,0,0,0.5)', u'Semi Transparent'),
+            VocabItem(u'rgba(255,0,0,0.5)', u'Red Transparent'),
+            VocabItem(u'rgb(25,25,112)', u'Dark Blue RGB'),
+            VocabItem(u'rgb(173,255,47)', u'Light Green RGB'),
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.

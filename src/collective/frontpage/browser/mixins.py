@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+import ast
+
 
 class SectionViewMixin():
 
@@ -12,20 +14,33 @@ class SectionViewMixin():
     def button_text_color(self, section):
         return self.contrasting_text_color(section.primary_color)
 
-    def contrasting_text_color(self, hex_str):
+    def contrasting_text_color(self, hex_val):
         '''
         Input a string without hash sign of RGB hex digits to compute
         complementary contrasting color such as for fonts
         '''
+        alpha = 1
+        r, g, b = ('255', '255', '255')
 
-        hex_str = hex_str.replace('#', '')
-        if len(hex_str) == 6:
-            (r, g, b) = (hex_str[:2], hex_str[2:4], hex_str[4:])
-        elif len(hex_str) == 8:
-            (r, g, b) = (hex_str[2:4], hex_str[4:6], hex_str[6:])
-        elif len(hex_str) == 3:
-            (r, g, b) = (hex_str[:1], hex_str[1:2], hex_str[2:])
-        else:
-            return '#000'
-        return '#000' if 1 - (int(r, 16) * 0.299 + int(g, 16) * 0.587 + int(b,
-                                                                            16) * 0.114) / 255 < 0.5 else '#fff'  # noqa
+        if '#' in hex_val:
+            hex_val = hex_val.replace('#', '')
+
+            if len(hex_val) == 6:
+                (r, g, b) = (hex_val[:2], hex_val[2:4], hex_val[4:])
+            elif len(hex_val) == 3:
+                (r, g, b) = (hex_val[:1], hex_val[1:2], hex_val[2:])
+
+        if 'rgba' in hex_val:
+            value = hex_val.replace('rgba', '').strip()
+            r, g, b, alpha = ast.literal_eval(value)
+
+        if 'rgb' in hex_val:
+            value = hex_val.replace('rgb', '').strip()
+            r, g, b = ast.literal_eval(value)
+
+        for key in ['r', 'g', 'b']:
+            local_val = getattr(self, key)
+            if isinstance(local_val, int):
+                local_val = str(local_val)
+
+        return '#000' if 1 - (int(r, 16) * 0.299 + int(g, 16) * 0.587 + int(b, 16) * 0.114) / 255 < 0.5 else '#FFF'  # noqa: 501
