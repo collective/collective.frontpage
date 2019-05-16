@@ -6,14 +6,17 @@
   <div class="section-content"
        style="background-color: ${section/background_color}">
     <h2 class="section-title"
-        style="color: ${python: view.text_color(section)};">${section/title}</h2>
-    <p class="section-description"
-       style="color: ${python: view.text_color(section)}; opacity: 0.6;">${section/description}</p>
-    <a href="${section/link_url}"
+        style="color: ${python: view.text_color(section)};">${section/title}
+    </h2>
+    <p tal:condition="section/description"
+       class="section-description"
+       style="color: ${python: view.text_color(section)}; opacity: 0.6;">${section/description}
+    </p>
+    <a tal:condition="section/link_title"
+       href="${section/link_url}"
        class="section-link"
        style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}">
       ${section/link_title}
     </a>
   </div>
 </div>
-
