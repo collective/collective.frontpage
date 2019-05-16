@@ -23,9 +23,9 @@ class SectionColors(object):
         #   name='operun.crm.ldap_objectclass_mapping')
 
         items = [
+            VocabItem(u'rgba(0,0,0,1)', u'None'),
             VocabItem(u'#0083BE', u'Plone Blue',),
             VocabItem(u'#F5F5F5', u'Dirty White'),
-            VocabItem(u'rgba(0,0,0,1)', u'None'),
             VocabItem(u'rgb(255,0,0)', u'Red'),
             VocabItem(u'rgba(0,0,0,0.5)', u'Semi Transparent'),
             VocabItem(u'rgba(255,0,0,0.5)', u'Red Transparent'),
