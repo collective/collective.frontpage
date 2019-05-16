@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# from plone import api
 from collective.frontpage import _
 from plone.dexterity.interfaces import IDexterityContent
 from zope.globalrequest import getRequest
@@ -30,12 +29,12 @@ class SectionTypes(object):
         ]
 
         # Fix context if you are using the vocabulary in DataGridField.
-        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # NOQA: 501
+        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # noqa: 501
         if not IDexterityContent.providedBy(context):
             req = getRequest()
             context = req.PARENTS[0]
 
-        # create a list of SimpleTerm items:
+        # Create a list of SimpleTerm items:
         terms = []
         for item in items:
             terms.append(

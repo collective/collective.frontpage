@@ -2,32 +2,25 @@
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-   i18n:domain="collective.frontpage"
-   metal:use-macro="context/main_template/macros/master">
+      i18n:domain="collective.frontpage"
+      metal:use-macro="context/main_template/macros/master">
 
 <head>
     <metal:block fill-slot="style_slot">
-        <link rel="stylesheet" type="text/css"
+      <link rel="stylesheet" type="text/css"
             tal:define="navroot context/@@plone_portal_state/navigation_root_url"
-            tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css"
-            />
+            tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css" />
     </metal:block>
 </head>
 
 <body>
-<metal:block fill-slot="content-core">
-  <div class="heading">
-    <li i18n:translate="">
-      Sample View
-    </li>
-    <span tal:content="view/msg">this gets replaced</span>
-  </div>
+<metal:block fill-slot="main">
 
-  <div>
-    <tal:repeat tal:repeat="section context/listFolderContents">
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
-    </tal:repeat>
-  </div>
+  <tal:repeat tal:repeat="section context/listFolderContents">
+    <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
+  </tal:repeat>
+
 </metal:block>
 </body>
+
 </html>

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage import _
+from collective.frontpage.browser.mixins import SectionViewMixin
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
-class Frontpage(BrowserView):
+class Frontpage(SectionViewMixin, BrowserView):
     template = ViewPageTemplateFile('templates/frontpage.pt')
 
     def __init__(self, context, request):
@@ -13,5 +13,4 @@ class Frontpage(BrowserView):
         self.request = request
 
     def __call__(self):
-        self.msg = _(u'A small message')
         return self.template()

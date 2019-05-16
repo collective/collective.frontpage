@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
+
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_ACCEPTANCE_TESTING  # noqa
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_ACCEPTANCE_TESTING  # noqa: 501
 
 import os
 import robotsuite

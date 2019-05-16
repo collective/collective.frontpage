@@ -5,10 +5,20 @@
       xmlns="http://www.w3.org/1999/xhtml"
       i18n:domain="collective.frontpage"
       lang="en">
+
+<head>
+  <metal:block fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css"
+          tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+          tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css" />
+  </metal:block>
+</head>
+
 <body>
   <metal:main fill-slot="main">
     <div tal:define="section python:view.context"
          metal:use-macro="context/@@frontpage_macros/frontpage_section_static" />
   </metal:main>
 </body>
+
 </html>

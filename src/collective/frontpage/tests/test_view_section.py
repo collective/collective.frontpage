@@ -17,18 +17,15 @@ class ViewsIntegrationTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        frontpage = api.content.create(self.portal, 'Frontpage', 'my-frontpage', 'My Frontpage')
-        api.content.create(frontpage, 'Section', 'my-section', 'My Section')
+        self.frontpage = api.content.create(self.portal, 'Frontpage', 'my-frontpage', 'My Frontpage')  # noqa E501
+        self.section = api.content.create(self.frontpage, 'Section', 'my-section', 'My Section')  # noqa E501
 
     def test_frontpage_is_registered(self):
-        view = getMultiAdapter(
-            (self.portal['my-frontpage'], self.portal.REQUEST),
-            name='view'
-        )
-        self.assertTrue(view(), 'frontpage is not found')
+        view = self.section.restrictedTraverse('view')
+        self.assertTrue(view(), 'section is not found')
         self.assertTrue(
             'My Section' in view(),
-            'Section Title is not found in frontpage'
+            'Section Title is not found in the view'
         )
 
 

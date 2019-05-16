@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
+
 from collective.frontpage import _
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getUtility
@@ -20,7 +21,7 @@ class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
     def test_vocab_section_background_colors(self):
-        vocab_name = 'collective.frontpage.SectionBackgroundColors'
+        vocab_name = 'collective.frontpage.SectionColors'
         factory = getUtility(IVocabularyFactory, vocab_name)
         self.assertTrue(IVocabularyFactory.providedBy(factory))
 
