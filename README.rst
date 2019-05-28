@@ -2,37 +2,32 @@
    If you want to learn more about writing documentation, please check out: http://docs.plone.org/about/documentation_styleguide.html
    This text does not appear on pypi or github. It is a comment.
 
-====================
+.. image:: https://travis-ci.org/collective/collective.frontpage.svg?branch=master
+    :target: https://travis-ci.org/collective/collective.frontpage
+
+.. image:: https://coveralls.io/repos/github/collective/collective.frontpage/badge.svg?branch=master
+    :target: https://coveralls.io/github/collective/collective.frontpage?branch=master
+
+
+==================
 collective.frontpage
-====================
+==================
 
-Tell me what your product does
-
-Features
---------
-
-- Can be bullet points
-
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+A customizable frontpage package for Plone.
 
 
 Documentation
 -------------
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+Full documentation for end users can be found in the "docs" folder.
 
 
 Translations
 ------------
 
-This product has been translated into
+This product has been translated into:
 
-- Klingon (thanks, K'Plai)
+- German (thanks, santonelli)
 
 
 Installation
@@ -48,7 +43,7 @@ Install collective.frontpage by adding it to your buildout::
         collective.frontpage
 
 
-and then running ``bin/buildout``
+and then running ``bin/buildout``...
 
 
 Contribute
@@ -56,14 +51,12 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.frontpage/issues
 - Source Code: https://github.com/collective/collective.frontpage
-- Documentation: https://docs.plone.org/foo/bar
 
 
 Support
 -------
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+If you are having issues, please let us know. We have a issue tracker located at: https://github.com/collective/collective.frontpage/issues
 
 
 License

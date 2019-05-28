@@ -1,26 +1,25 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
       i18n:domain="collective.frontpage"
-      metal:use-macro="context/main_template/macros/master">
+      lang="en">
 
 <head>
-    <metal:block fill-slot="style_slot">
-      <link rel="stylesheet" type="text/css"
-            tal:define="navroot context/@@plone_portal_state/navigation_root_url"
-            tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css" />
-    </metal:block>
+  <metal:block fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css"
+          tal:define="navroot context/@@plone_portal_state/navigation_root_url"
+          tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css" />
+  </metal:block>
 </head>
 
 <body>
-<metal:block fill-slot="main">
-
-  <tal:repeat tal:repeat="section context/listFolderContents">
-    <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
-  </tal:repeat>
-
-</metal:block>
+  <metal:block fill-slot="main">
+    <tal:repeat tal:repeat="section context/listFolderContents">
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
+    </tal:repeat>
+  </metal:block>
 </body>
 
 </html>

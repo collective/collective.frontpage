@@ -1,3 +1,4 @@
+dist: trusty
 language: python
 sudo: false
 cache:
@@ -6,7 +7,7 @@ cache:
   - eggs
   - downloads
 python:
-  - "2.7"
+  - '2.7'
 matrix:
   fast_finish: true
 install:
@@ -15,9 +16,10 @@ install:
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True annotate
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True
 before_script:
-- export DISPLAY=:99.0
-- sh -e /etc/init.d/xvfb start
-- firefox -v
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - sleep 3 # give xvfb some time to start
+  - firefox -v
 script:
   - bin/code-analysis
   - bin/test

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from collective.frontpage import _
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
+from collective.frontpage.testing import (
+    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
+)  # noqa: 501
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getUtility
@@ -17,11 +19,11 @@ class SectionTypesIntegrationTest(unittest.TestCase):
 
     def setUp(self):
         """Custom shared utility setup for tests."""
-        self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.portal = self.layer["portal"]
+        setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
     def test_vocab_section_types(self):
-        vocab_name = 'collective.frontpage.SectionTypes'
+        vocab_name = "collective.frontpage.SectionTypes"
         factory = getUtility(IVocabularyFactory, vocab_name)
         self.assertTrue(IVocabularyFactory.providedBy(factory))
 
@@ -35,7 +37,4 @@ class SectionTypesIntegrationTest(unittest.TestCase):
         # VocabItem(u'tiles', _(u'Tiles Section')),
         # VocabItem(u'search', _(u'Search Section')),
 
-        self.assertEqual(
-            vocabulary.getTerm(u'welcome').title,
-            _(u'Welcome Section'),
-        )
+        self.assertEqual(vocabulary.getTerm(u"welcome").title, _(u"Welcome Section"))

@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <rolemap>
   <permissions>
-  <!-- -*- extra stuff goes here -*- -->
 
     <permission name="collective.frontpage: Add Item" acquire="True">
       <role name="Manager"/>
@@ -10,7 +9,6 @@
       <role name="Contributor"/>
     </permission>
 
-
     <permission name="collective.frontpage: Add Section" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
@@ -18,14 +16,12 @@
       <role name="Contributor"/>
     </permission>
 
-
     <permission name="collective.frontpage: Add Frontpage" acquire="True">
       <role name="Manager"/>
       <role name="Site Administrator"/>
       <role name="Owner"/>
       <role name="Contributor"/>
     </permission>
-
 
   </permissions>
 </rolemap>
