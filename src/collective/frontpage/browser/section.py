@@ -7,7 +7,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class SectionView(SectionViewMixin, BrowserView):
 
-    template = ViewPageTemplateFile('templates/section.pt')
+    template = ViewPageTemplateFile("templates/section.pt")
 
     def __call__(self):
         return self.template()

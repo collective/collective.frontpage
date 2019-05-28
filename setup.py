@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='collective.frontpage',
-    version='1.0a1',
+    version='1.0.0a1.dev0',
     description="An add-on for Plone to easily create a frontpage with sections",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
@@ -54,7 +54,7 @@ setup(
             'plone.testing>=5.0.0',
             'plone.app.contenttypes',
             'plone.app.robotframework[debug]',
-        ],
+        ]
     },
     entry_points="""
     [z3c.autoinclude.plugin]

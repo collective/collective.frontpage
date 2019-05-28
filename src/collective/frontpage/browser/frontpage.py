@@ -6,6 +6,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class Frontpage(SectionViewMixin, BrowserView):
+
     template = ViewPageTemplateFile('templates/frontpage.pt')
 
     def __init__(self, context, request):

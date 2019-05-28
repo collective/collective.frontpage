@@ -17,19 +17,18 @@ class VocabItem(object):
 
 @implementer(IVocabularyFactory)
 class SectionTypes(object):
-
     def __call__(self, context):
         items = [
-            VocabItem(u'welcome', _(u'Welcome Section')),
-            VocabItem(u'teaser', _(u'Teaser Section')),
-            VocabItem(u'static', _(u'Static Section')),
-            VocabItem(u'news', _(u'News Section')),
-            VocabItem(u'tiles', _(u'Tiles Section')),
-            VocabItem(u'search', _(u'Search Section')),
+            VocabItem(u"welcome", _(u"Welcome Section")),
+            VocabItem(u"teaser", _(u"Teaser Section")),
+            VocabItem(u"static", _(u"Static Section")),
+            VocabItem(u"news", _(u"News Section")),
+            VocabItem(u"tiles", _(u"Tiles Section")),
+            VocabItem(u"search", _(u"Search Section")),
         ]
-
         # Fix context if you are using the vocabulary in DataGridField.
-        # See https://github.com/collective/collective.z3cform.datagridfield/issues/31:  # noqa: 501
+        # https://github.com/collective/
+        #   collective.z3cform.datagridfield/issues/31
         if not IDexterityContent.providedBy(context):
             req = getRequest()
             context = req.PARENTS[0]
@@ -38,11 +37,7 @@ class SectionTypes(object):
         terms = []
         for item in items:
             terms.append(
-                SimpleTerm(
-                    value=item.token,
-                    token=str(item.token),
-                    title=item.value,
-                )
+                SimpleTerm(value=item.token, token=str(item.token), title=item.value)
             )
         # Create a SimpleVocabulary from the terms list and return it:
         return SimpleVocabulary(terms)

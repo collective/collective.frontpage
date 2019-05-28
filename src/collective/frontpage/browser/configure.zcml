@@ -6,6 +6,7 @@
 
   <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
   <include package="z3c.jbot" file="meta.zcml" />
+
   <browser:jbot
       directory="overrides"
       layer="collective.frontpage.interfaces.ICollectiveFrontpageLayer"
@@ -13,16 +14,16 @@
 
   <!-- Publish static files -->
   <browser:resourceDirectory
-  name="collective.frontpage"
-  directory="static" />
+      name="collective.frontpage"
+      directory="static" />
 
   <!-- Custom Browser Views -->
   <browser:page
-     name="view"
-     for="collective.frontpage.content.frontpage.IFrontpage"
-     class=".frontpage.Frontpage"
-     permission="zope2.View"
-     />
+      name="view"
+      for="collective.frontpage.content.frontpage.IFrontpage"
+      class=".frontpage.Frontpage"
+      permission="zope2.View"
+      />
 
 
   <browser:page
@@ -33,11 +34,11 @@
       />
 
 
-    <browser:page
-        name="frontpage_macros"
-        for="*"
-        template="templates/frontpage_macros.pt"
-        permission="zope2.View"
-        />
+  <browser:page
+      name="frontpage_macros"
+      for="*"
+      template="templates/frontpage_macros.pt"
+      permission="zope2.View"
+      />
 
 </configure>
