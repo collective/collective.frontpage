@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from plone import api
 from plone.dexterity.interfaces import IDexterityContent
 from zope.globalrequest import getRequest
 from zope.interface import implementer
@@ -18,16 +19,13 @@ class VocabItem(object):
 class SectionColors(object):
     def __call__(self, context):
         # NOTE: Get colors and list_to_dict()
-        items = [
-            VocabItem(u"rgba(0,0,0,1)", u"None"),
-            VocabItem(u"#0083BE", u"Plone Blue"),
-            VocabItem(u"#F5F5F5", u"Dirty White"),
-            VocabItem(u"rgb(255,0,0)", u"Red"),
-            VocabItem(u"rgba(0,0,0,0.5)", u"Semi Transparent"),
-            VocabItem(u"rgba(255,0,0,0.5)", u"Red Transparent"),
-            VocabItem(u"rgb(25,25,112)", u"Dark Blue RGB"),
-            VocabItem(u"rgb(173,255,47)", u"Light Green RGB"),
-        ]
+        items = list()
+        section_colors = api.portal.get_registry_record(
+            "collective.frontpage.section_colors"
+        )
+        for color in section_colors:
+            split = color.split("|")
+            items.append(VocabItem(split[1].strip(), split[0].strip()))
         # Fix context if you are using the vocabulary in DataGridField.
         # https://github.com/
         #   collective/collective.z3cform.datagridfield/issues/31
