@@ -12,12 +12,30 @@
   <include file="upgrades.zcml"/>
 
   <genericsetup:registerProfile
+      name="clean"
+      title="Collective Frontpage (collective.frontpage) - Clean"
+      directory="profiles/clean"
+      description="Installs the collective.frontpage:clean profile."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.clean"
+      />
+
+  <genericsetup:registerProfile
       name="default"
       title="Collective Frontpage (collective.frontpage)"
       directory="profiles/default"
       description="Installs the collective.frontpage add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="demo"
+      title="Collective Frontpage (collective.frontpage) - Demo"
+      directory="profiles/demo"
+      description="Installs the collective.frontpage:demo profile."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.demo"
       />
 
   <genericsetup:registerProfile

@@ -7,5 +7,8 @@ Changelog
 
 Added:
 
+- Added Clean and Demo profiles with demo content. #6
+  [netroxen]
+
 - Initial release.
   [sarn0ld]

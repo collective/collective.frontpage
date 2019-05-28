@@ -2,6 +2,6 @@
 <metadata>
   <version>1001</version>
   <dependencies>
-    <dependency>profile-collective.frontpage:demo</dependency>
+    <dependency>profile-collective.frontpage:clean</dependency>
   </dependencies>
 </metadata>
