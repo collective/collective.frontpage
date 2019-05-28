@@ -9,6 +9,7 @@ Added:
 
 - Added Clean and Demo profiles with demo content. #6
 - Added configurable section colors to configlet. #5
+- Added Clean and Demo profiles with demo content. #6
   [netroxen]
 
 - Initial release.
