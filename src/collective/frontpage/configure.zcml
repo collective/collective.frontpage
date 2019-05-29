@@ -14,25 +14,25 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="Collective Frontpage (collective.frontpage)"
+      title="Collective Frontpage"
       directory="profiles/default"
-      description="Installs the collective.frontpage add-on."
+      description="Install collective.frontpage Content Types and Views without setting any content"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       post_handler=".setuphandlers.post_install"
       />
 
   <genericsetup:registerProfile
-      name="testing"
-      title="Collective Frontpage (collective.frontpage) - Testing"
-      directory="profiles/testing"
-      description="Installs the collective.frontpage:testing profile."
+      name="demo"
+      title="Collective Frontpage - Demo"
+      directory="profiles/demo"
+      description="Install the collective.frontpage in Demo Mode. Do not use in production!"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      post_handler=".setuphandlers.testing"
+      post_handler=".setuphandlers.demo"
       />
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="Collective Frontpage (collective.frontpage) - Uninstall"
+      title="Collective Frontpage - Uninstall"
       directory="profiles/uninstall"
       description="Uninstalls the collective.frontpage add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"

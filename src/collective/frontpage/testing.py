@@ -76,7 +76,7 @@ class CollectiveFrontpageLayer(PloneSandboxLayer):
 
 class CollectiveFrontpageTestingLayer(CollectiveFrontpageLayer):
     def setUpPloneSite(self, portal):  # noqa
-        applyProfile(portal, "collective.frontpage:testing")
+        applyProfile(portal, "collective.frontpage:demo")
         portal.acl_users.userFolderAddUser(
             SITE_OWNER_NAME, SITE_OWNER_PASSWORD, ["Manager"], []
         )
@@ -88,7 +88,6 @@ class CollectiveFrontpageSessionLayer(CollectiveFrontpageTestingLayer):
         setup_sdm(portal)
 
 
-COLLECTIVE_FRONTPAGE_FIXTURE = CollectiveFrontpageLayer()
 COLLECTIVE_FRONTPAGE_TESTING_FIXTURE = CollectiveFrontpageTestingLayer()
 COLLECTIVE_FRONTPAGE_ACCEPTANCE_SESSION_FIXTURE = CollectiveFrontpageSessionLayer()
 
