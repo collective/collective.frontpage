@@ -50,14 +50,10 @@ def _create_frontpage(portal):
 def _create_sections(portal):
     frontpage = portal.get("frontpage", None)
     section_colors = getUtility(
-        IVocabularyFactory,
-        'collective.frontpage.SectionColors',
+        IVocabularyFactory, "collective.frontpage.SectionColors"
     )
     voc_colors = section_colors(portal)
-    section_types = getUtility(
-        IVocabularyFactory,
-        'collective.frontpage.SectionTypes',
-    )
+    section_types = getUtility(IVocabularyFactory, "collective.frontpage.SectionTypes")
     voc_types = section_types(portal)
     if frontpage:
         for i in range(1, 5):
