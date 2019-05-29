@@ -48,15 +48,29 @@ class MixinsIntegrationTest(unittest.TestCase):
         self.assertEqual("#000", SectionViewMixin._contrasting_text_color("#FFF"))
         self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("#000000"))
         self.assertEqual("#000", SectionViewMixin._contrasting_text_color("#FFFFFF"))
-        self.assertEqual("#000", SectionViewMixin._contrasting_text_color("rgb(255,255,255)"))
+        self.assertEqual(
+            "#000", SectionViewMixin._contrasting_text_color("rgb(255,255,255)")
+        )
         self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("rgb(0,0,0)"))
-        self.assertEqual("#000", SectionViewMixin._contrasting_text_color("rgba(255,255,255, 0.5)"))
-        self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0.5)"))
+        self.assertEqual(
+            "#000", SectionViewMixin._contrasting_text_color("rgba(255,255,255, 0.5)")
+        )
+        self.assertEqual(
+            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0.5)")
+        )
 
-        self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0)"))
-        self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0.1)"))
-        self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 1.0)"))
-        self.assertEqual("#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 1)"))
+        self.assertEqual(
+            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0)")
+        )
+        self.assertEqual(
+            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0.1)")
+        )
+        self.assertEqual(
+            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 1.0)")
+        )
+        self.assertEqual(
+            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 1)")
+        )
 
 
 class MixinsFunctionalTest(unittest.TestCase):
