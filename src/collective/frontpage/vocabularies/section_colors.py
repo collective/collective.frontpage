@@ -46,7 +46,8 @@ class SectionColors(object):
                 logger.exception(
                     "Could not use color {color} -> Please check the settings to make "
                     "your custom color available! "
-                    "Each line should contain a Pipe Symbol".format(color=color))
+                    "Each line should contain a Pipe Symbol".format(color=color)
+                )
         return items
 
     @staticmethod
@@ -56,19 +57,22 @@ class SectionColors(object):
         for item in items:
             try:
                 if item:
-                    term = SimpleTerm(value=item.token, token=str(item.token),
-                                      title=item.value)
+                    term = SimpleTerm(
+                        value=item.token, token=str(item.token), title=item.value
+                    )
                     if term in terms:
                         logger.warning(
                             "Could not add {color}, because it is already "
-                            "defined in {list}.".format(color=item.value, list=terms))
+                            "defined in {list}.".format(color=item.value, list=terms)
+                        )
                     else:
                         terms.append(term)
             except UnicodeEncodeError:
                 logger.exception(
                     "Could not use one of your custom colors -> Please check the "
                     "settings to make your custom color available! "
-                    "Please don't use special characters in RGB-Values!")
+                    "Please don't use special characters in RGB-Values!"
+                )
         return terms
 
     @staticmethod
@@ -76,8 +80,10 @@ class SectionColors(object):
         try:
             voc = SimpleVocabulary(terms)
         except ValueError:
-            logger.exception("Couldn't use all custom colors. Please make sure "
-                             "that all defined colors have unique keys and values!")
+            logger.exception(
+                "Couldn't use all custom colors. Please make sure "
+                "that all defined colors have unique keys and values!"
+            )
             # Ignore duplicates:
             voc = SimpleVocabulary(terms, swallow_duplicates=True)
         return voc

@@ -25,7 +25,7 @@ class SectionViewMixin(object):
         if "#" in value:
             value = value.replace("#", "")
             if len(value) == 3:
-                value = u''.join(2 * s for s in value)
+                value = u"".join(2 * s for s in value)
             if len(value) == 6:
                 r, g, b = (value[:2], value[2:4], value[4:])
 
