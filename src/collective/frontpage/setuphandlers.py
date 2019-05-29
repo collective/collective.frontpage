@@ -15,14 +15,44 @@ class HiddenProfiles(object):
         return ["collective.frontpage:uninstall"]
 
 
-def _create_dummy_user():
-    """Creates a dummy user for testing"""
-    api.user.create(
-        email="max.mustermann@testing.com",
-        username="mmustermann",
-        password="testing@collective.frontpage",
-        properties={"fullname": u"Max Mustermann"},
+def post_install(context):
+    """Post install script"""
+    pass
+
+
+def uninstall(context):
+    """Uninstall script"""
+    pass
+
+
+def demo(context):
+    """Demo handler for the collective.frontpage:demo profile"""
+    portal = api.portal.get()
+    _create_frontpage(portal)
+    _remove_default_pages(portal)
+    _create_sections(portal)
+    _create_dummy_user()
+
+
+def _create_frontpage(portal):
+    frontpage = api.content.create(
+        type="Frontpage", container=portal, id="frontpage", title=u"Frontpage"
     )
+    api.content.transition(obj=frontpage, transition="publish")
+    section = api.content.create(
+        type="Section",
+        container=frontpage,
+        id="section",
+        title=u"Example Section",
+        description="This is an example Section in your new Frontpage",
+        section_type=u"static",
+        background_color="#F5F5F5",
+        primary_color="#0083BE",
+        link_url="https://github.com/collective/collective.frontpage",
+        link_title="Click me!",
+    )
+    api.content.transition(obj=section, transition="publish")
+    portal.setDefaultPage("frontpage")
 
 
 def _remove_default_pages(portal):
@@ -39,12 +69,14 @@ def _remove_default_pages(portal):
         pass
 
 
-def _create_frontpage(portal):
-    frontpage = api.content.create(
-        type="Frontpage", container=portal, id="frontpage", title=u"Frontpage"
+def _create_dummy_user():
+    """Creates a dummy user for testing"""
+    api.user.create(
+        email="max.mustermann@testing.com",
+        username="mmustermann",
+        password="testing@collective.frontpage",
+        properties={"fullname": u"Max Mustermann"},
     )
-    api.content.transition(obj=frontpage, transition="publish")
-    portal.setDefaultPage("frontpage")
 
 
 def _create_sections(portal):
@@ -67,36 +99,7 @@ def _create_sections(portal):
                 section_type=choice(voc_types._terms).token,
                 background_color=choice(voc_colors._terms).token,
                 primary_color=choice(voc_colors._terms).token,
+                link_url="https://www.operun.de",
+                link_title="Click me!",
             )
             api.content.transition(obj=section, transition="publish")
-
-
-def post_install(context):
-    """Post install script"""
-    # Do something at the end of the installation of this package.
-    portal = api.portal.get()
-    _create_frontpage(portal)
-
-
-def uninstall(context):
-    """Uninstall script"""
-    # Do something at the end of the uninstallation of this package.
-
-
-def clean(context):
-    """Clean handler for the collective.frontpage:testing profile"""
-    # Do something at the end of the clean installation of this package.
-
-
-def demo(context):
-    """Demo handler for the collective.frontpage:testing profile"""
-    # Do something at the end of the demo installation of this package.
-    portal = api.portal.get()
-    _remove_default_pages(portal)
-    _create_sections(portal)
-    _create_dummy_user()
-
-
-def testing(context):
-    """Testing handler for the collective.frontpage:testing profile"""
-    # Do something at the end of the testing installation of this package.
