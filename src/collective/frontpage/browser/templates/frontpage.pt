@@ -17,7 +17,8 @@
 <body>
   <metal:block fill-slot="main">
     <tal:repeat tal:repeat="section context/listFolderContents">
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_teaser" tal:condition="python: section.section_type==u'teaser'"/>
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static" tal:condition="python: section.section_type==u'static'"/>
     </tal:repeat>
   </metal:block>
 </body>
