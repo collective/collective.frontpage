@@ -52,7 +52,7 @@ class FrontpageIntegrationTest(unittest.TestCase):
     def test_ct_frontpage_adding(self):
         setRoles(self.portal, TEST_USER_ID, ["Contributor"])
         obj = api.content.create(
-            container=self.portal, type="Frontpage", id="frontpage"
+            container=self.portal, type="Frontpage", id="test-frontpage"
         )
 
         self.assertTrue(

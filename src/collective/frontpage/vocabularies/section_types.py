@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from collective.frontpage import _
-from plone.dexterity.interfaces import IDexterityContent
-from zope.globalrequest import getRequest
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
@@ -26,12 +24,6 @@ class SectionTypes(object):
             VocabItem(u"tiles", _(u"Tiles Section")),
             VocabItem(u"search", _(u"Search Section")),
         ]
-        # Fix context if you are using the vocabulary in DataGridField.
-        # https://github.com/collective/
-        #   collective.z3cform.datagridfield/issues/31
-        if not IDexterityContent.providedBy(context):
-            req = getRequest()
-            context = req.PARENTS[0]
 
         # Create a list of SimpleTerm items:
         terms = []
