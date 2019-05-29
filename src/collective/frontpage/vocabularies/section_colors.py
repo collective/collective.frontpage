@@ -76,7 +76,7 @@ class SectionColors(object):
         try:
             voc = SimpleVocabulary(terms)
         except ValueError:
-            logger.exception("Couldn't use all custom colors. Please make sure"
+            logger.exception("Couldn't use all custom colors. Please make sure "
                              "that all defined colors have unique keys and values!")
             # Ignore duplicates:
             voc = SimpleVocabulary(terms, swallow_duplicates=True)
