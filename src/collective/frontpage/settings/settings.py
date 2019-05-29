@@ -14,7 +14,7 @@ class ISettings(Interface):
         value_type=schema.TextLine(),
         required=True,
         default=[
-            u"None | rgba(0,0,0,1)",
+            u"None | rgba(0,0,0,0)",
             u"Plone Blue | #0083BE",
             u"Dirty White | #F5F5F5",
             u"Red | rgb(255,0,0)",

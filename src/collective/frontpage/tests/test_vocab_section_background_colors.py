@@ -27,7 +27,7 @@ class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
         section_colors = api.portal.get_registry_record(
             "collective.frontpage.section_colors"
         )
-        self.assertIn(u"None | rgba(0,0,0,1)", section_colors)
+        self.assertIn(u"None | rgba(0,0,0,0)", section_colors)
         self.assertIn(u"Plone Blue | #0083BE", section_colors)
         self.assertIn(u"Dirty White | #F5F5F5", section_colors)
 
@@ -36,7 +36,7 @@ class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
         self.assertTrue(IVocabularyFactory.providedBy(factory))
         vocabulary = factory(self.portal)
         self.assertTrue(IVocabularyTokenized.providedBy(vocabulary))
-        self.assertEqual(vocabulary.getTerm(u"rgba(0,0,0,1)").title, _(u"None"))
+        self.assertEqual(vocabulary.getTerm(u"rgba(0,0,0,0)").title, _(u"None"))
         self.assertEqual(vocabulary.getTerm(u"#0083BE").title, _(u"Plone Blue"))
         self.assertEqual(vocabulary.getTerm(u"#F5F5F5").title, _(u"Dirty White"))
 

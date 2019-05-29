@@ -27,7 +27,7 @@ class ISection(model.Schema):
             u"background-image. Make sure to use transparency if "
             u"you want to show an image."
         ),
-        default="rgba(0,0,0,1)",
+        default="rgba(0,0,0,0)",
         vocabulary="collective.frontpage.SectionColors",
         required=True,
     )
