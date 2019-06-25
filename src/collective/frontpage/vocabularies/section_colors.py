@@ -18,7 +18,7 @@ class VocabItem(object):
         self.value = value
 
     def __str__(self):
-        return self.token + ": " + self.value
+        return '<Color {0}: {1}>'.format(self.value, self.token)
 
     __repr__ = __str__
 
@@ -60,7 +60,7 @@ class SectionColors(object):
                     term = SimpleTerm(
                         value=item.token, token=str(item.token), title=item.value
                     )
-                    if term in terms:
+                    if item.token in [x.value for x in terms]:
                         logger.warning(
                             "Could not add {color}, because it is already "
                             "defined in {list}.".format(color=item.value, list=terms)
@@ -77,21 +77,15 @@ class SectionColors(object):
 
     @staticmethod
     def _create_vocabulary(terms):
-        try:
-            voc = SimpleVocabulary(terms)
-        except ValueError:
-            logger.exception(
-                "Couldn't use all custom colors. Please make sure "
-                "that all defined colors have unique keys and values!"
-            )
-            # Ignore duplicates:
-            voc = SimpleVocabulary(terms, swallow_duplicates=True)
-        return voc
+        return SimpleVocabulary(terms, swallow_duplicates=True)
 
     @staticmethod
     def list_to_dict(list_of_items):
         """Converts list mappings into dict"""
-        return dict(item.split("|") for item in list_of_items)
+        try:
+            return dict(item.split("|") for item in list_of_items)
+        except ValueError:
+            return dict()
 
 
 SectionColorsFactory = SectionColors()
