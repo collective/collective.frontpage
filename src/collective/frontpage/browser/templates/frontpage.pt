@@ -8,16 +8,15 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css"
-          tal:define="navroot context/@@plone_portal_state/navigation_root_url"
-          tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage.css">
   </metal:block>
 </head>
 
 <body>
   <metal:block fill-slot="main">
     <tal:repeat tal:repeat="section context/listFolderContents">
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static"/>
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_teaser" tal:condition="python: section.section_type==u'teaser'"/>
+      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static" tal:condition="python: section.section_type==u'static'"/>
     </tal:repeat>
   </metal:block>
 </body>

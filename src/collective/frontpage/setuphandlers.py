@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
-from collective.frontpage import config
 from plone import api
 from Products.CMFPlone.interfaces import INonInstallable
-from random import choice
-from zope.component import getUtility
 from zope.interface import implementer
-from zope.schema.interfaces import IVocabularyFactory
 
 
 @implementer(INonInstallable)
@@ -28,9 +24,10 @@ def uninstall(context):
 def demo(context):
     """Demo handler for the collective.frontpage:demo profile"""
     portal = api.portal.get()
-    _create_frontpage(portal)
+    frontpage = _create_frontpage(portal)
+    _create_teaser_section(frontpage)
+    _create_static_section(frontpage)
     _remove_default_pages(portal)
-    _create_sections(portal)
     _create_dummy_user()
 
 
@@ -39,10 +36,15 @@ def _create_frontpage(portal):
         type="Frontpage", container=portal, id="frontpage", title=u"Frontpage"
     )
     api.content.transition(obj=frontpage, transition="publish")
+    portal.setDefaultPage("frontpage")
+    return frontpage
+
+
+def _create_static_section(frontpage):
     section = api.content.create(
         type="Section",
         container=frontpage,
-        id="section",
+        id="section-static",
         title=u"Example Section",
         description="This is an example Section in your new Frontpage",
         section_type=u"static",
@@ -52,7 +54,22 @@ def _create_frontpage(portal):
         link_title="Click me!",
     )
     api.content.transition(obj=section, transition="publish")
-    portal.setDefaultPage("frontpage")
+
+
+def _create_teaser_section(frontpage):
+    section = api.content.create(
+        type="Section",
+        container=frontpage,
+        id="section-teaser",
+        title=u"Teaser",
+        description="This is an example of a fullscreen Teaser Section.",
+        section_type=u"teaser",
+        background_color="#0083BE",
+        primary_color="#F5F5F5",
+        link_url="",
+        link_title="",
+    )
+    api.content.transition(obj=section, transition="publish")
 
 
 def _remove_default_pages(portal):
@@ -77,29 +94,3 @@ def _create_dummy_user():
         password="testing@collective.frontpage",
         properties={"fullname": u"Max Mustermann"},
     )
-
-
-def _create_sections(portal):
-    frontpage = portal.get("frontpage", None)
-    section_colors = getUtility(
-        IVocabularyFactory, "collective.frontpage.SectionColors"
-    )
-    voc_colors = section_colors(portal)
-    section_types = getUtility(IVocabularyFactory, "collective.frontpage.SectionTypes")
-    voc_types = section_types(portal)
-    if frontpage:
-        for i in range(1, 5):
-            num = "{0:0=2d}".format(i)
-            section = api.content.create(
-                type="Section",
-                container=frontpage,
-                id="section-{0}".format(num),
-                title=u"Section {0}".format(num),
-                description=choice(config.DUMMY_DESCRIPTIONS),
-                section_type=choice(voc_types._terms).token,
-                background_color=choice(voc_colors._terms).token,
-                primary_color=choice(voc_colors._terms).token,
-                link_url="https://www.operun.de",
-                link_title="Click me!",
-            )
-            api.content.transition(obj=section, transition="publish")

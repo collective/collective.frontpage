@@ -4,6 +4,10 @@
   background-size: cover;
 }
 
+.full-height {
+  min-height: 100vh;
+}
+
 .section-content {
   background-origin: padding-box, padding-box;
   padding-bottom: 88px;
@@ -19,7 +23,6 @@
   line-height: 67.2px;
   margin-bottom: 8px;
   margin-top: 0;
-  text-align: center;
   text-align: center;
   text-transform: uppercase;
 }

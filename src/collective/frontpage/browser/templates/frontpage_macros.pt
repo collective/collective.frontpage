@@ -1,9 +1,34 @@
+<!-- Standard Section -->
+
 <div class="frontpage-section"
+     metal:define-macro="frontpage_section_static"
      tal:define="image python:section.get('background_image', None)"
-     tal:attributes="style python:'background-image: url(' + section.absolute_url() +'@@images/background_image)' if image else ''"
-     metal:define-macro="frontpage_section_static">
+     tal:attributes="style python:'background-image: url(' + section.absolute_url() +'@@images/background_image)' if image else ''">
 
   <div class="section-content" style="background-color: ${section/background_color}">
+    <h2 class="section-title" style="color: ${python: view.text_color(section)};">${section/title}</h2>
+    <p tal:condition="section/description"
+       class="section-description"
+       style="color: ${python: view.text_color(section)}; opacity: 0.6;">${section/description}
+    </p>
+    <a tal:condition="section/link_title"
+       href="${section/link_url}"
+       class="section-link"
+       style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}">
+      ${section/link_title}
+    </a>
+  </div>
+
+</div>
+
+<!-- Full-Height Section -->
+
+<div class="frontpage-section full-height"
+     metal:define-macro="frontpage_section_teaser"
+     tal:define="image python:section.get('background_image', None)"
+     tal:attributes="style python:'background-image: url(' + section.absolute_url() +'@@images/background_image)' if image else ''">
+
+  <div class="section-content full-height" style="background-color: ${section/background_color}">
     <h2 class="section-title" style="color: ${python: view.text_color(section)};">${section/title}</h2>
     <p tal:condition="section/description"
        class="section-description"
