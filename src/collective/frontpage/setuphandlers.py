@@ -25,8 +25,8 @@ def demo(context):
     """Demo handler for the collective.frontpage:demo profile"""
     portal = api.portal.get()
     frontpage = _create_frontpage(portal)
-    _create_static_section(frontpage)
     _create_teaser_section(frontpage)
+    _create_static_section(frontpage)
     _remove_default_pages(portal)
     _create_dummy_user()
 
