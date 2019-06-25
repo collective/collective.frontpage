@@ -8,9 +8,7 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css"
-          tal:define="navroot context/@@plone_portal_state/navigation_root_url"
-          tal:attributes="href string:${navroot}/++resource++collective.frontpage/frontpage.css" />
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage.css">
   </metal:block>
 </head>
 

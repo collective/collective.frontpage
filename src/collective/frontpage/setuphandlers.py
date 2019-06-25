@@ -62,7 +62,7 @@ def _create_teaser_section(frontpage):
         container=frontpage,
         id="section-teaser",
         title=u"Teaser",
-        description="This is an example Teaser Section. It is fullscreen.",
+        description="This is an example of a fullscreen Teaser Section.",
         section_type=u"teaser",
         background_color="#0083BE",
         primary_color="#F5F5F5",
