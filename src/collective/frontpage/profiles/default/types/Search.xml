@@ -11,7 +11,7 @@
 
   <property
       i18n:translate=""
-      name="description">A section of a Frontpage. Can contain Items.</property>
+      name="description">A search section for a Frontpage.</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Search</property>
@@ -21,23 +21,20 @@
   <!-- Hierarchy control -->
   <property name="global_allow">False</property>
   <property name="filter_content_types">True</property>
-  <property name="allowed_content_types">
-    <element value="Item" />
-  </property>
+  <property name="allowed_content_types"></property>
 
   <!-- Schema, class and security -->
   <property name="add_permission">collective.frontpage.AddSection</property>
-  <property name="klass">collective.frontpage.content.section.Section</property>
+  <property name="klass">collective.frontpage.content.search.Search</property>
   <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema">collective.frontpage.content.section.ISection</property>
+  <property name="schema">collective.frontpage.content.search.ISearch</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
     <element value="plone.app.content.interfaces.INameFromTitle"/>
-    <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-    <element value="plone.app.dexterity.behaviors.id.IShortName"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+    <element value="collective.frontpage.ISectionFields"/>
   </property>
 
   <!-- View information -->

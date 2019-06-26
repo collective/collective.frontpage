@@ -8,9 +8,11 @@
 
   <include package=".browser"/>
   <include package=".settings"/>
+  <include package=".vocabularies"/>
 
   <include file="permissions.zcml"/>
   <include file="upgrades.zcml"/>
+  <include file="behaviors.zcml"/>
 
   <genericsetup:registerProfile
       name="default"
@@ -41,7 +43,5 @@
 
   <utility factory=".setuphandlers.HiddenProfiles"
            name="collective.frontpage-hiddenprofiles"/>
-
-  <include package=".vocabularies"/>
 
 </configure>

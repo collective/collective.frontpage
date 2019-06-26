@@ -42,32 +42,28 @@ def _create_frontpage(portal):
 
 def _create_static_section(frontpage):
     section = api.content.create(
-        type="Section",
+        type="Static",
         container=frontpage,
-        id="section-static",
-        title=u"Example Section",
-        description="This is an example Section in your new Frontpage",
-        section_type=u"static",
-        background_color="#F5F5F5",
-        primary_color="#0083BE",
+        id="section-static-default",
+        title=u"Example Static",
+        description="This is an example of a static frontpage section.",
+        background_color=u"#F5F5F5",
+        primary_color=u"#0083BE",
         link_url="https://github.com/collective/collective.frontpage",
-        link_title="Click me!",
+        link_title="GitHub Homepage",
     )
     api.content.transition(obj=section, transition="publish")
 
 
 def _create_teaser_section(frontpage):
     section = api.content.create(
-        type="Section",
+        type="Teaser",
         container=frontpage,
-        id="section-teaser",
-        title=u"Teaser",
-        description="This is an example of a fullscreen Teaser Section.",
-        section_type=u"teaser",
-        background_color="#0083BE",
-        primary_color="#F5F5F5",
-        link_url="",
-        link_title="",
+        id="section-teaser-default",
+        title=u"Example Teaser",
+        description="This is an example of a fullscreen frontpage section.",
+        background_color=u"#0083BE",
+        primary_color=u"#F5F5F5",
     )
     api.content.transition(obj=section, transition="publish")
 

@@ -9,6 +9,7 @@
   <browser:resourceDirectory name="collective.frontpage" directory="static" />
 
   <!-- Custom Browser Views -->
+
   <browser:page
       name="view"
       for="collective.frontpage.content.frontpage.IFrontpage"
@@ -26,38 +27,54 @@
   <!-- Section Display Templates -->
 
   <browser:page
-      name="section_static"
-      for="collective.frontpage.content.section.ISection"
+      name="static_default"
+      title="Static Default"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.static.IStatic"
       permission="zope2.View"
-      class=".section.SectionView"
+      class=".sections.SectionsView"
       />
 
+  <!-- Teaser -->
+
   <browser:page
-      name="section_teaser"
-      for="collective.frontpage.content.section.ISection"
+      name="teaser_default"
+      title="Teaser Default"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.teaser.ITeaser"
       permission="zope2.View"
-      class=".section.SectionView"
+      class=".sections.SectionsView"
       />
+
+  <!-- Search -->
 
   <browser:page
       name="search_bar"
-      for="collective.frontpage.content.section.ISection"
+      title="Search Bar"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.search.ISearch"
       permission="zope2.View"
-      class=".section.SectionView"
+      class=".sections.SectionsView"
       />
+
+  <!-- Tiles -->
 
   <browser:page
       name="tile_cards"
-      for="collective.frontpage.content.section.ISection"
+      title="Tile Cards"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.tiles.ITiles"
       permission="zope2.View"
-      class=".section.SectionView"
+      class=".sections.SectionsView"
       />
 
   <browser:page
-      name="tile_articles"
-      for="collective.frontpage.content.section.ISection"
+      name="tile_cascade"
+      title="Tile Cascade"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.tiles.ITiles"
       permission="zope2.View"
-      class=".section.SectionView"
+      class=".sections.SectionsView"
       />
 
 </configure>

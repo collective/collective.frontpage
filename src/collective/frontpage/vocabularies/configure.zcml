@@ -6,8 +6,4 @@
         component=".section_colors.SectionColorsFactory"
         name="collective.frontpage.SectionColors" />
 
-    <utility
-        component=".section_types.SectionTypesFactory"
-        name="collective.frontpage.SectionTypes" />
-
 </configure>

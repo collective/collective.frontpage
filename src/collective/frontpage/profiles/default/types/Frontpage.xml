@@ -11,7 +11,7 @@
 
   <property
       i18n:translate=""
-      name="description">A container for Section Items</property>
+      name="description">A container for Frontpage sections.</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Frontpage</property>
@@ -22,9 +22,10 @@
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
-    <element value="Section" />
-    <element value="Tiles" />
     <element value="Search" />
+    <element value="Static" />
+    <element value="Teaser" />
+    <element value="Tiles" />
   </property>
 
   <!-- Schema, class and security -->

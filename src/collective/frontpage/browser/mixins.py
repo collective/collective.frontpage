@@ -3,7 +3,8 @@
 import ast
 
 
-class SectionViewMixin(object):
+class SectionsViewMixin(object):
+
     def text_color(self, section):
         if section.background_image:
             return "#FFF"
@@ -17,7 +18,7 @@ class SectionViewMixin(object):
     def _contrasting_text_color(value):
         """
         Input a string with hash sign of RGB hex digits or rgb(1,2,3) or rgba(1,2,3,0.5)
-        to compute complementary contrasting color such as for fonts
+        to compute complementary contrasting color such as for fonts.
         """
         alpha = 1
         r, g, b = ("255", "255", "255")

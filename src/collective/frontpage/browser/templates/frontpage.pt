@@ -8,12 +8,14 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage.css">
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-26.css">
   </metal:block>
 </head>
 
 <body>
   <metal:block fill-slot="main">
+
+    <div tal:replace="structure view/_render_sections"></div>
 
   </metal:block>
 </body>

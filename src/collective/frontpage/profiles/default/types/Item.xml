@@ -11,7 +11,7 @@
 
   <property
       i18n:translate=""
-      name="description">An item / tile / card to use in a frontpage section</property>
+      name="description">An item for a Frontpage section.</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Item</property>
@@ -34,6 +34,7 @@
     <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
     <element value="plone.app.dexterity.behaviors.id.IShortName"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
+    <element value="collective.frontpage.ISectionLinkItem"/>
   </property>
 
   <!-- View information -->
@@ -74,7 +75,7 @@
       visible="True">
     <permission value="View"/>
   </action>
-  
+
   <action
       action_id="edit"
       category="object"

@@ -3,13 +3,12 @@
 
   <!-- Frontpage -->
   <object meta_type="Dexterity FTI" name="Frontpage"/>
+  <object meta_type="Dexterity FTI" name="Item"/>
 
   <!-- Frontpage - Section Types -->
-  <object meta_type="Dexterity FTI" name="Section"/>
-  <object meta_type="Dexterity FTI" name="Tiles"/>
   <object meta_type="Dexterity FTI" name="Search"/>
-
-  <!-- Other -->
-  <object meta_type="Dexterity FTI" name="Item"/>
+  <object meta_type="Dexterity FTI" name="Static"/>
+  <object meta_type="Dexterity FTI" name="Teaser"/>
+  <object meta_type="Dexterity FTI" name="Tiles"/>
 
 </object>

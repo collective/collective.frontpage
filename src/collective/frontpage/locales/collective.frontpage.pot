@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-05-28 12:35+0000\n"
+"POT-Creation-Date: 2019-06-26 12:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,44 +18,52 @@ msgstr ""
 "Domain: collective.frontpage\n"
 
 #: collective/frontpage/profiles/default/types/Frontpage.xml
-msgid "A container for Section Items"
+msgid "A container for Frontpage sections."
 msgstr ""
 
-#: collective/frontpage/profiles/default/types/Section.xml
-msgid "A section of a Frontpage. Can contain Items."
+#: collective/frontpage/profiles/default/types/Search.xml
+msgid "A search section for a Frontpage."
+msgstr ""
+
+#: collective/frontpage/profiles/default/types/Static.xml
+msgid "A static section for a Frontpage. Can contain Items."
+msgstr ""
+
+#: collective/frontpage/profiles/default/types/Teaser.xml
+msgid "A teaser section for a Frontpage. Can contain Items."
+msgstr ""
+
+#: collective/frontpage/profiles/default/types/Tiles.xml
+msgid "A tiles section for a Frontpage. Can contain Items."
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Item.xml
-msgid "An item / tile / card to use in a frontpage section"
+msgid "An item for a Frontpage section."
 msgstr ""
 
-#: collective/frontpage/content/section.py
+#: collective/frontpage/behaviors.py
 msgid "Background Color"
 msgstr ""
 
-#: collective/frontpage/content/section.py
+#: collective/frontpage/behaviors.py
 msgid "Background Image"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
-msgid "Collective Frontpage (collective.frontpage)"
+msgid "Collective Frontpage"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
-msgid "Collective Frontpage (collective.frontpage) - Testing"
+msgid "Collective Frontpage - Demo"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
-msgid "Collective Frontpage (collective.frontpage) - Uninstall"
-msgstr ""
-
-#: collective/frontpage/content/section.py
-msgid "Color for Icons and Buttons"
+msgid "Collective Frontpage - Uninstall"
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Frontpage.xml
 #: collective/frontpage/profiles/default/types/Item.xml
-#: collective/frontpage/profiles/default/types/Section.xml
+#: collective/frontpage/profiles/default/types/Search.xml
 msgid "Edit"
 msgstr ""
 
@@ -63,80 +71,76 @@ msgstr ""
 msgid "Frontpage"
 msgstr ""
 
-#: collective/frontpage/content/item.py
-msgid "Image"
+#: collective/frontpage/profiles/default/controlpanel.xml
+msgid "Frontpage Settings"
+msgstr ""
+
+#: collective/frontpage/behaviors.zcml
+msgid "ISectionFields"
+msgstr ""
+
+#: collective/frontpage/behaviors.zcml
+msgid "ISectionLinkItem"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
-msgid "Installs the collective.frontpage add-on."
+msgid "Install collective.frontpage Content Types and Views without setting any content"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
-msgid "Installs the collective.frontpage:testing profile."
+msgid "Install the collective.frontpage in Demo Mode. Do not use in production!"
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Item.xml
 msgid "Item"
 msgstr ""
 
-#: collective/frontpage/content/item.py collective/frontpage/content/section.py
-msgid "Link"
+#: collective/frontpage/behaviors.py
+msgid "Link Title"
 msgstr ""
 
-#: collective/frontpage/content/item.py collective/frontpage/content/section.py
-msgid "Linktitle"
+#: collective/frontpage/behaviors.py
+msgid "Link URL"
 msgstr ""
 
-#: collective/frontpage/vocabularies/section_types.py
-msgid "News Section"
-msgstr ""
-
-#: collective/frontpage/content/section.py
+#: collective/frontpage/behaviors.py
 msgid "Primary Color"
 msgstr ""
 
-#: collective/frontpage/vocabularies/section_types.py
-msgid "Search Section"
+#: collective/frontpage/profiles/default/types/Search.xml
+msgid "Search"
 msgstr ""
 
-#: collective/frontpage/profiles/default/types/Section.xml
-msgid "Section"
+#: collective/frontpage/behaviors.zcml
+msgid "Standard set of fields for a Frontpage link section."
 msgstr ""
 
-#: collective/frontpage/vocabularies/section_types.py
-msgid "Static Section"
+#: collective/frontpage/behaviors.zcml
+msgid "Standard set of fields for a Frontpage section."
 msgstr ""
 
-#: collective/frontpage/vocabularies/section_types.py
-msgid "Teaser Section"
+#: collective/frontpage/profiles/default/types/Static.xml
+msgid "Static"
 msgstr ""
 
-#: collective/frontpage/content/section.py
-msgid "The Background-Color will always be on top of the background-image. Make sure to use transparency if you want to show an image."
+#: collective/frontpage/profiles/default/types/Teaser.xml
+msgid "Teaser"
 msgstr ""
 
-#: collective/frontpage/content/section.py
-msgid "The title for the main button"
+#: collective/frontpage/behaviors.py
+msgid "The background-color will always be on top of the background-image. Make sure to use transparency if you want to the image."
 msgstr ""
 
-#: collective/frontpage/content/section.py
-msgid "The url to open when you click the main button"
+#: collective/frontpage/behaviors.py
+msgid "The primary color used for icons and buttons."
 msgstr ""
 
-#: collective/frontpage/content/section.py
-msgid "This changes the styling and content of the section."
+#: collective/frontpage/behaviors.py
+msgid "This sets a fullscreen-background to the section. Make sure to use a semi-transparent or fully transparent background-color to see the image."
 msgstr ""
 
-#: collective/frontpage/content/section.py
-msgid "This will be a fullscreen-background for the section. Make sure to set a semi-transparent or fully transparent background-color to see the image."
-msgstr ""
-
-#: collective/frontpage/vocabularies/section_types.py
-msgid "Tiles Section"
-msgstr ""
-
-#: collective/frontpage/content/section.py
-msgid "Type"
+#: collective/frontpage/profiles/default/types/Tiles.xml
+msgid "Tiles"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
@@ -145,20 +149,31 @@ msgstr ""
 
 #: collective/frontpage/profiles/default/types/Frontpage.xml
 #: collective/frontpage/profiles/default/types/Item.xml
-#: collective/frontpage/profiles/default/types/Section.xml
+#: collective/frontpage/profiles/default/types/Search.xml
 msgid "View"
 msgstr ""
 
-#: collective/frontpage/vocabularies/section_types.py
-msgid "Welcome Section"
+#. Default: "Section Colors"
+#: collective/frontpage/settings/settings.py
+msgid "frontpage_settings_section_colors_title"
+msgstr ""
+
+#. Default: "Frontpage Settings"
+#: collective/frontpage/settings/settings.py
+msgid "frontpage_settings_title"
 msgstr ""
 
 #. Default: "Select an available icon."
 #: collective/frontpage/content/item.py
-msgid "tile_icon_description"
+msgid "item_contenttype_icon_description_icon"
 msgstr ""
 
 #. Default: "Icon"
 #: collective/frontpage/content/item.py
-msgid "tile_icon_title"
+msgid "item_contenttype_icon_title_icon"
+msgstr ""
+
+#. Default: "Image"
+#: collective/frontpage/content/item.py
+msgid "item_contenttype_image_title_icon"
 msgstr ""
