@@ -14,10 +14,18 @@
 
 <body>
   <metal:main fill-slot="main">
-    <tal:block tal:define="section python:view.context">
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_teaser" tal:condition="python: section.section_type==u'teaser'"/>
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static" tal:condition="python: section.section_type==u'static'"/>
-    </tal:block>
+    <tal:define tal:define="section python:view.context">
+
+      <!-- Sections -->
+      <tal:condition tal:condition="python:view.is_layout('section_static')">
+        <div metal:use-macro="context/@@frontpage_macros/section_static" />
+      </tal:condition>
+
+      <tal:condition tal:condition="python:view.is_layout('section_teaser')">
+        <div metal:use-macro="context/@@frontpage_macros/section_teaser" />
+      </tal:condition>
+
+    </tal:define>
   </metal:main>
 </body>
 

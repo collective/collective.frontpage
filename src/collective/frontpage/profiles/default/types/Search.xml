@@ -1,20 +1,20 @@
 <?xml version="1.0"?>
 <object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-        name="Section"
+        name="Search"
         meta_type="Dexterity FTI"
         i18n:domain="collective.frontpage">
 
   <!-- Basic properties -->
   <property
       i18n:translate=""
-      name="title">Section</property>
+      name="title">Search</property>
 
   <property
       i18n:translate=""
       name="description">A section of a Frontpage. Can contain Items.</property>
 
   <property name="allow_discussion">False</property>
-  <property name="factory">Section</property>
+  <property name="factory">Search</property>
   <property name="icon_expr"></property>
   <property name="link_target"></property>
 
@@ -41,13 +41,12 @@
   </property>
 
   <!-- View information -->
-  <property name="add_view_expr">string:${folder_url}/++add++Section</property>
-  <property name="default_view">section_static</property>
+  <property name="add_view_expr">string:${folder_url}/++add++Search</property>
+  <property name="default_view">search_bar</property>
   <property name="default_view_fallback">False</property>
-  <property name="immediate_view">section_static</property>
+  <property name="immediate_view">search_bar</property>
   <property name="view_methods">
-    <element value="section_static"/>
-    <element value="section_teaser"/>
+    <element value="search_bar"/>
   </property>
 
   <!-- Method aliases -->

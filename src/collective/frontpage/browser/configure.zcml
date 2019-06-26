@@ -4,18 +4,9 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.frontpage">
 
-  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
   <include package="z3c.jbot" file="meta.zcml" />
-
-  <browser:jbot
-      directory="overrides"
-      layer="collective.frontpage.interfaces.ICollectiveFrontpageLayer"
-      />
-
-  <!-- Publish static files -->
-  <browser:resourceDirectory
-      name="collective.frontpage"
-      directory="static" />
+  <browser:jbot directory="overrides" layer="collective.frontpage.interfaces.ICollectiveFrontpageLayer" />
+  <browser:resourceDirectory name="collective.frontpage" directory="static" />
 
   <!-- Custom Browser Views -->
   <browser:page
@@ -25,20 +16,48 @@
       permission="zope2.View"
       />
 
-
-  <browser:page
-      name="view"
-      for="collective.frontpage.content.section.ISection"
-      permission="zope2.View"
-      class=".section.SectionView"
-      />
-
-
   <browser:page
       name="frontpage_macros"
       for="*"
       template="templates/frontpage_macros.pt"
       permission="zope2.View"
+      />
+
+  <!-- Section Display Templates -->
+
+  <browser:page
+      name="section_static"
+      for="collective.frontpage.content.section.ISection"
+      permission="zope2.View"
+      class=".section.SectionView"
+      />
+
+  <browser:page
+      name="section_teaser"
+      for="collective.frontpage.content.section.ISection"
+      permission="zope2.View"
+      class=".section.SectionView"
+      />
+
+  <browser:page
+      name="search_bar"
+      for="collective.frontpage.content.section.ISection"
+      permission="zope2.View"
+      class=".section.SectionView"
+      />
+
+  <browser:page
+      name="tile_cards"
+      for="collective.frontpage.content.section.ISection"
+      permission="zope2.View"
+      class=".section.SectionView"
+      />
+
+  <browser:page
+      name="tile_articles"
+      for="collective.frontpage.content.section.ISection"
+      permission="zope2.View"
+      class=".section.SectionView"
       />
 
 </configure>
