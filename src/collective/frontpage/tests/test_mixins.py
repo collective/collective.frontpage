@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage.browser.mixins import SectionViewMixin
+from collective.frontpage.browser.mixins import SectionsViewMixin
 from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_FUNCTIONAL_TESTING  # noqa: 501
 from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
@@ -21,9 +21,9 @@ class MixinsIntegrationTest(unittest.TestCase):
             self.portal, "Frontpage", "my-frontpage", "My Frontpage"
         )
         self.section = api.content.create(
-            self.frontpage, "Section", "my-section", "My Section"
+            self.frontpage, "Teaser", "my-section", "My Teaser"
         )
-        self.view = self.section.restrictedTraverse("view")
+        self.view = self.section.restrictedTraverse("teaser_default")
 
     def test_text_color_image(self):
         self.assertTrue(self.view())
@@ -44,40 +44,40 @@ class MixinsIntegrationTest(unittest.TestCase):
 
     def test_contrasting_text_color(self):
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color("#000"))
+            "#FFF", SectionsViewMixin._contrasting_text_color("#000"))
         self.assertEqual(
-            "#000", SectionViewMixin._contrasting_text_color("#FFF"))
+            "#000", SectionsViewMixin._contrasting_text_color("#FFF"))
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color("#000000"))
+            "#FFF", SectionsViewMixin._contrasting_text_color("#000000"))
         self.assertEqual(
-            "#000", SectionViewMixin._contrasting_text_color("#FFFFFF"))
+            "#000", SectionsViewMixin._contrasting_text_color("#FFFFFF"))
         self.assertEqual(
-            "#000", SectionViewMixin._contrasting_text_color(
+            "#000", SectionsViewMixin._contrasting_text_color(
                 "rgb(255,255,255)")
         )
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color("rgb(0,0,0)"))
+            "#FFF", SectionsViewMixin._contrasting_text_color("rgb(0,0,0)"))
         self.assertEqual(
-            "#000", SectionViewMixin._contrasting_text_color(
+            "#000", SectionsViewMixin._contrasting_text_color(
                 "rgba(255,255,255, 0.5)")
         )
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color(
+            "#FFF", SectionsViewMixin._contrasting_text_color(
                 "rgba(0,0,0, 0.5)")
         )
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 0)")
+            "#FFF", SectionsViewMixin._contrasting_text_color("rgba(0,0,0, 0)")
         )
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color(
+            "#FFF", SectionsViewMixin._contrasting_text_color(
                 "rgba(0,0,0, 0.1)")
         )
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color(
+            "#FFF", SectionsViewMixin._contrasting_text_color(
                 "rgba(0,0,0, 1.0)")
         )
         self.assertEqual(
-            "#FFF", SectionViewMixin._contrasting_text_color("rgba(0,0,0, 1)")
+            "#FFF", SectionsViewMixin._contrasting_text_color("rgba(0,0,0, 1)")
         )
 
 

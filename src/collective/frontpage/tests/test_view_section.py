@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_FUNCTIONAL_TESTING  # noqa: 501; noqa: 501
-from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_FUNCTIONAL_TESTING  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -20,14 +20,14 @@ class ViewsIntegrationTest(unittest.TestCase):
             self.portal, "Frontpage", "my-frontpage", "My Frontpage"
         )
         self.section = api.content.create(
-            self.frontpage, "Section", "my-section", "My Section"
+            self.frontpage, "Teaser", "my-section", "My Teaser"
         )
 
     def test_frontpage_is_registered(self):
         view = self.section.restrictedTraverse("view")
         self.assertTrue(view(), "section is not found")
         self.assertTrue(
-            "My Section" in view(), "Section Title is not found in the view"
+            "My Teaser" in view(), "Section Title is not found in the view"
         )
 
 

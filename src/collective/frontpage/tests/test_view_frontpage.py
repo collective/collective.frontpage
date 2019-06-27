@@ -20,7 +20,7 @@ class ViewsIntegrationTest(unittest.TestCase):
         frontpage = api.content.create(
             self.portal, "Frontpage", "my-frontpage", "My Frontpage"
         )
-        api.content.create(frontpage, "Section", "my-section", "My Section")
+        api.content.create(frontpage, "Teaser", "my-section", "My Section")
 
     def test_frontpage_is_registered(self):
         view = getMultiAdapter(
