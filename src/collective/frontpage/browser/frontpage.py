@@ -1,29 +1,30 @@
 # -*- coding: utf-8 -*-
 
-from BeautifulSoup import BeautifulSoup
-from collective.frontpage.browser.mixins import SectionsViewMixin
+from lxml import html
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-import re
 
-
-class Frontpage(SectionsViewMixin, BrowserView):
+class Frontpage(BrowserView):
 
     template = ViewPageTemplateFile("templates/frontpage.pt")
 
     def __call__(self):
+        self.section_classname = 'frontpage-section'
         return self.template()
 
-    def render_sections(self):
+    def get_sections(self):
         contents = self.context.listFolderContents()
-        output = str()
+        section_list = list()
         for section in contents:
-            section.REQUEST.set('ajax_load', 'True')
-            parsed_html = BeautifulSoup(section())
-            output += str(
-                parsed_html.body.find(
-                    'div', attrs={'class': re.compile('^frontpage-section*')}
+            section_view = section.unrestrictedTraverse(section.getLayout())
+            section_view.request.set('ajax_load', 'True')
+            tree = html.fromstring(section_view())
+            parsed_html = tree.xpath(
+                '//div[contains(@class, "{0}")]'.format(
+                    self.section_classname
                 )
             )
-        return output
+            for elem in parsed_html:
+                section_list.append(html.tostring(elem))
+        return section_list

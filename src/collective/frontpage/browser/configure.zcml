@@ -25,7 +25,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.static.IStatic"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".static.StaticDefaultView"
       />
 
   <!-- Teaser -->
@@ -36,7 +36,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.teaser.ITeaser"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".teaser.TeaserDefaultView"
       />
 
   <!-- Search -->
@@ -47,7 +47,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.search.ISearch"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".search.SearchBarView"
       />
 
   <!-- Tiles -->
@@ -58,7 +58,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.tiles.ITiles"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".tiles.TilesCardView"
       />
 
   <browser:page
@@ -67,7 +67,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.tiles.ITiles"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".tiles.TilesCascadeView"
       />
 
 </configure>

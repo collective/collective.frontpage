@@ -8,14 +8,18 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-26.css">
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
   </metal:block>
 </head>
 
 <body>
   <metal:block fill-slot="main">
 
-    <div tal:replace="structure view/render_sections"></div>
+    <tal:define tal:define="sections view/get_sections">
+      <tal:repeat tal:repeat="section sections">
+        <div tal:replace="structure section"></div>
+      </tal:repeat>
+    </tal:define>
 
   </metal:block>
 </body>
