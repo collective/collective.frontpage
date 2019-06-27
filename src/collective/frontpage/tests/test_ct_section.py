@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collective.frontpage.content.section import ISection
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
 from plone.api.exc import InvalidParameterError
 from plone.app.testing import setRoles

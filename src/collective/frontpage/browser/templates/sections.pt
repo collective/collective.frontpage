@@ -18,23 +18,104 @@
     <tal:define tal:define="section python:view.context">
 
       <tal:condition tal:condition="python:view.is_layout('teaser_default')">
-        <div metal:use-macro="context/@@frontpage_macros/teaser_default" />
+        <div class="frontpage-section full-height" metal:define-macro="teaser_default">
+          <div class="section-content" tal:attributes="style view/get_style">
+
+            <div class="section-text">
+              <h2 class="section-title">${section/title}</h2>
+              <p class="section-description" tal:condition="section/description">${section/description}</p>
+            </div>
+
+            <a class="section-link" tal:condition="section/link_title"
+               style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}"
+               href="${section/link_url}">${section/link_title}</a>
+
+          </div>
+        </div>
       </tal:condition>
 
       <tal:condition tal:condition="python:view.is_layout('static_default')">
-        <div metal:use-macro="context/@@frontpage_macros/static_default" />
+        <div class="frontpage-section" metal:define-macro="static_default">
+          <div class="section-content" tal:attributes="style view/get_style">
+
+            <div class="section-text">
+              <h2 class="section-title">${section/title}</h2>
+              <p class="section-description" tal:condition="section/description">${section/description}</p>
+            </div>
+
+            <a class="section-link" href="${section/link_url}"
+               style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}"
+               tal:condition="section/link_title">${section/link_title}</a>
+
+          </div>
+        </div>
       </tal:condition>
 
       <tal:condition tal:condition="python:view.is_layout('tile_cards')">
-        <div metal:use-macro="context/@@frontpage_macros/tile_cards" />
+        <div class="frontpage-section" metal:define-macro="tile_cards">
+          <div class="section-content" tal:attributes="style view/get_style">
+
+            <div class="section-text">
+              <h2 class="section-title">${section/title}</h2>
+              <p class="section-description" tal:condition="section/description">${section/description}</p>
+            </div>
+
+            <div class="tiles cards" tal:define="items view/contents" tal:condition="items">
+              <tal:repeat tal:repeat="item items">
+                <div class="card" style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}">
+                  <div class="card-title">${item/title|nothing}</div>
+                  <div class="card-description">${item/description|nothing}</div>
+                  <tal:condition tal:condition="item/link_url|nothing">
+                    <a class="section-link" href="${item/link_url}" title="${item/link_title}">Read more...</a>
+                  </tal:condition>
+                </div>
+              </tal:repeat>
+            </div>
+
+          </div>
+        </div>
       </tal:condition>
 
       <tal:condition tal:condition="python:view.is_layout('tile_cascade')">
-        <div metal:use-macro="context/@@frontpage_macros/tile_cascade" />
+        <div class="frontpage-section" metal:define-macro="tile_cascade">
+          <div class="section-content" tal:attributes="style view/get_style">
+
+            <div class="section-text">
+              <h2 class="section-title">${section/title}</h2>
+              <p class="section-description" tal:condition="section/description">${section/description}</p>
+            </div>
+
+            <div class="tiles cards cascade" tal:define="items view/contents" tal:condition="items">
+              <tal:repeat tal:repeat="item items">
+                <div class="card" style="background-color: ${section/primary_color}; color: ${python: view.button_text_color(section)}">
+                  <div class="card-title">${item/title|nothing}</div>
+                  <div class="card-description">${item/description|nothing}</div>
+                  <tal:condition tal:condition="item/link_url|nothing">
+                    <a class="section-link" href="${item/link_url}" title="${item/link_title}">Read more...</a>
+                  </tal:condition>
+                </div>
+              </tal:repeat>
+            </div>
+
+          </div>
+        </div>
       </tal:condition>
 
       <tal:condition tal:condition="python:view.is_layout('search_bar')">
-        <div metal:use-macro="context/@@frontpage_macros/search_bar" />
+        <div class="frontpage-section" metal:define-macro="search_bar">
+          <div class="section-content" tal:attributes="style view/get_style">
+
+            <div class="section-text">
+              <h2 class="section-title">${section/title}</h2>
+              <p class="section-description" tal:condition="section/description">${section/description}</p>
+            </div>
+
+            <form action="${view/get_portal_url}/@@search" enctype="multipart/form-data" method="POST">
+              <input type="text" name="SearchableText" placeholder="Search something..." i18n:attributes="placeholder search_something">
+            </form>
+
+          </div>
+        </div>
       </tal:condition>
 
     </tal:define>

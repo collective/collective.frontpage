@@ -15,7 +15,7 @@
 <body>
   <metal:block fill-slot="main">
 
-    <div tal:replace="structure view/_render_sections"></div>
+    <div tal:replace="structure view/render_sections"></div>
 
   </metal:block>
 </body>

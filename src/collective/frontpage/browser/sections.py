@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from collective.frontpage.browser.mixins import SectionsViewMixin
+from plone import api
 from Products.Five import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone import api
 
 
 class SectionsView(SectionsViewMixin, BrowserView):

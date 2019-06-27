@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_FUNCTIONAL_TESTING,
-)  # noqa: 501; noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_FUNCTIONAL_TESTING  # noqa: 501; noqa: 501
 from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING
 from plone import api
 from plone.app.testing import setRoles

@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 from collective.frontpage import _
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
+from collective.frontpage.vocabularies.section_colors import SectionColors
+from collective.frontpage.vocabularies.section_colors import VocabItem
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.interfaces import IVocabularyTokenized
-from collective.frontpage.vocabularies.section_colors import SectionColors
-from collective.frontpage.vocabularies.section_colors import VocabItem
 
-import unittest
 import copy
+import unittest
 
 
 class SectionBackgroundColorsIntegrationTest(unittest.TestCase):

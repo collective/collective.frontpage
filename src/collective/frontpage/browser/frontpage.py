@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
+from BeautifulSoup import BeautifulSoup
 from collective.frontpage.browser.mixins import SectionsViewMixin
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from BeautifulSoup import BeautifulSoup
+
 import re
 
 
@@ -14,10 +15,11 @@ class Frontpage(SectionsViewMixin, BrowserView):
     def __call__(self):
         return self.template()
 
-    def _render_sections(self):
+    def render_sections(self):
         contents = self.context.listFolderContents()
         output = str()
         for section in contents:
+            section.REQUEST.set('ajax_load', 'True')
             parsed_html = BeautifulSoup(section())
             output += str(
                 parsed_html.body.find(

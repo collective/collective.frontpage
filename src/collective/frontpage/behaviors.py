@@ -2,9 +2,9 @@
 
 from collective.frontpage import _
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope import schema
-from plone.namedfile.field import NamedBlobImage
 from zope.interface import alsoProvides
 from zope.interface import Interface
 

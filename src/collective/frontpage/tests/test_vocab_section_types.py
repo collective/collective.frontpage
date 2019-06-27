@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collective.frontpage import _
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getUtility

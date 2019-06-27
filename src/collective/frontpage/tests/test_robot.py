@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_ACCEPTANCE_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_ACCEPTANCE_TESTING  # noqa: 501
 from plone.app.testing import ROBOT_TEST_LEVEL
 from plone.testing import layered
 
