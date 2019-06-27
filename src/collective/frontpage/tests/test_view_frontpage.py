@@ -20,7 +20,7 @@ class ViewsIntegrationTest(unittest.TestCase):
         frontpage = api.content.create(
             self.portal, "Frontpage", "my-frontpage", "My Frontpage"
         )
-        api.content.create(frontpage, "Teaser", "my-section", "My Section")
+        api.content.create(frontpage, "Teaser", "my-section", "My Teaser")
 
     def test_frontpage_is_registered(self):
         view = getMultiAdapter(
@@ -28,7 +28,7 @@ class ViewsIntegrationTest(unittest.TestCase):
         )
         self.assertTrue(view(), "frontpage is not found")
         self.assertTrue(
-            "My Section" in view(), "Section Title is not found in frontpage"
+            "My Teaser" in view(), "Teaser Title is not found in frontpage"
         )
 
 

@@ -27,7 +27,7 @@ class ViewsIntegrationTest(unittest.TestCase):
         view = self.section.restrictedTraverse("view")
         self.assertTrue(view(), "section is not found")
         self.assertTrue(
-            "My Teaser" in view(), "Section Title is not found in the view"
+            "My Teaser" in view(), "Teaser Title is not found in the view"
         )
 
 
