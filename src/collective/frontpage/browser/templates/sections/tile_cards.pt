@@ -24,7 +24,7 @@
           <p class="section-description" tal:condition="context/description">${context/description}</p>
         </div>
 
-        <div class="tiles cards" tal:define="items view/contents" tal:condition="items">
+        <div class="tiles cards" tal:define="items view/contents|nothing" tal:condition="items">
           <tal:repeat tal:repeat="item items">
             <div class="card" style="background-color: ${context/primary_color}; color: ${python: view.button_text_color(context)}">
               <div class="card-icon">

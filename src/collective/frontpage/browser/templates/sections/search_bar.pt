@@ -19,12 +19,7 @@
     <div class="frontpage-section" metal:define-macro="search_bar">
       <div class="section-content" tal:attributes="style view/get_style">
 
-        <div class="section-text">
-          <h2 class="section-title">${context/title}</h2>
-          <p class="section-description" tal:condition="context/description">${context/description}</p>
-        </div>
-
-        <form action="${view/get_portal_url}/@@search" enctype="multipart/form-data" method="POST">
+        <form action="${view/portal/absolute_url}/@@search" enctype="multipart/form-data" method="POST">
           <input type="text" name="SearchableText" placeholder="Search something..." i18n:attributes="placeholder search_something">
         </form>
 

@@ -9,7 +9,23 @@ from zope.interface import alsoProvides
 from zope.interface import Interface
 
 
-class ISectionFields(model.Schema):
+class IImageFields(model.Schema):
+
+    background_image = NamedBlobImage(
+        title=_(u"Background Image"),
+        description=_(
+            u"This sets a background image to an item. "
+            u"Make sure to use a semi-transparent or fully transparent "
+            u"background-color to see the image."
+        ),
+        required=False,
+    )
+
+
+alsoProvides(IImageFields, IFormFieldProvider)
+
+
+class IColorFields(model.Schema):
 
     background_color = schema.Choice(
         title=_(u"Background Color"),
@@ -26,23 +42,13 @@ class ISectionFields(model.Schema):
     primary_color = schema.Choice(
         title=_(u"Primary Color"),
         default=u"#0083BE",
-        description=_(u"The primary color used for icons and buttons."),
+        description=_(u"The primary color used for text, icons and buttons."),
         vocabulary="collective.frontpage.SectionColors",
         required=True,
     )
 
-    background_image = NamedBlobImage(
-        title=_(u"Background Image"),
-        description=_(
-            u"This sets a fullscreen-background to the section. "
-            u"Make sure to use a semi-transparent or fully transparent "
-            u"background-color to see the image."
-        ),
-        required=False,
-    )
 
-
-alsoProvides(ISectionFields, IFormFieldProvider)
+alsoProvides(IColorFields, IFormFieldProvider)
 
 
 class ISectionFieldsMarker(Interface):

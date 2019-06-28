@@ -34,10 +34,14 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
+
     <element value="plone.app.content.interfaces.INameFromTitle"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-    <element value="collective.frontpage.ISectionFields"/>
+
     <element value="collective.frontpage.ILinkFields"/>
+    <element value="collective.frontpage.IColorFields"/>
+    <element value="collective.frontpage.IImageFields"/>
+
   </property>
 
   <!-- View information -->

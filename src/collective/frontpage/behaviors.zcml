@@ -6,16 +6,23 @@
     <include package="plone.behavior" file="meta.zcml" />
 
     <plone:behavior
-        title="ISectionFields"
-        name="collective.frontpage.ISectionFields"
-        description="Standard set of fields for a Frontpage section."
-        provides=".behaviors.ISectionFields"
+        title="IImageFields"
+        name="collective.frontpage.IImageFields"
+        description="Standard set of image fields for an item."
+        provides=".behaviors.IImageFields"
+        />
+
+    <plone:behavior
+        title="IColorFields"
+        name="collective.frontpage.IColorFields"
+        description="Standard set of color fields for an item."
+        provides=".behaviors.IColorFields"
         />
 
     <plone:behavior
         title="ILinkFields"
         name="collective.frontpage.ILinkFields"
-        description="Standard set of link fields for a Frontpage section."
+        description="Standard set of link fields for an item."
         provides=".behaviors.ILinkFields"
         />
 
