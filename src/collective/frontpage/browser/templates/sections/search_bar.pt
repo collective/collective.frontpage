@@ -19,9 +19,11 @@
     <div class="frontpage-section" metal:define-macro="search_bar">
       <div class="section-content" tal:attributes="style view/get_style">
 
-        <form action="${view/portal/absolute_url}/@@search" enctype="multipart/form-data" method="POST">
-          <input type="text" name="SearchableText" placeholder="Search something..." i18n:attributes="placeholder search_something">
-        </form>
+        <div class="col-md-6 col-md-offset-3">
+          <form action="${view/portal/absolute_url}/@@search" enctype="multipart/form-data" method="POST">
+            <input type="text" name="SearchableText" placeholder="Search something..." i18n:attributes="placeholder search_something">
+          </form>
+        </div>
 
       </div>
     </div>
