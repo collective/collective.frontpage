@@ -25,6 +25,13 @@ class IImageFields(model.Schema):
 alsoProvides(IImageFields, IFormFieldProvider)
 
 
+class IImageFieldsMarker(Interface):
+    """
+    Marker interface that will be provided by instances using the
+    IImageFields behavior.
+    """
+
+
 class IColorFields(model.Schema):
 
     background_color = schema.Choice(
@@ -51,10 +58,10 @@ class IColorFields(model.Schema):
 alsoProvides(IColorFields, IFormFieldProvider)
 
 
-class ISectionFieldsMarker(Interface):
+class IColorFieldsMarker(Interface):
     """
     Marker interface that will be provided by instances using the
-    ISectionFields behavior.
+    IColorFields behavior.
     """
 
 
