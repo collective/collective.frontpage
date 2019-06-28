@@ -8,9 +8,6 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 class TilesBase(SectionsViewMixin, BrowserView):
     """TilesBase base class"""
 
-    def __call__(self):
-        self.contents = self.context.listFolderContents()
-
 
 class TilesCardView(TilesBase):
     """TilesCardView base class"""
@@ -18,6 +15,7 @@ class TilesCardView(TilesBase):
     template = ViewPageTemplateFile("templates/sections/tile_cards.pt")
 
     def __call__(self):
+        self.contents = self.context.listFolderContents()
         return self.template()
 
 
@@ -27,4 +25,5 @@ class TilesCascadeView(TilesBase):
     template = ViewPageTemplateFile("templates/sections/tile_cascade.pt")
 
     def __call__(self):
+        self.contents = self.context.listFolderContents()
         return self.template()
