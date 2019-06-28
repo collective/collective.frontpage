@@ -15,6 +15,9 @@ collective.frontpage
 
 A customizable frontpage package for Plone.
 
+.. image:: https://raw.githubusercontent.com/collective/collective.frontpage/master/docs/preview.jpg
+    :target: https://raw.githubusercontent.com/collective/collective.frontpage/master/docs/preview.jpg
+
 
 Documentation
 -------------

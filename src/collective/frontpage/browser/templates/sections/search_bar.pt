@@ -1,0 +1,34 @@
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
+      i18n:domain="collective.frontpage"
+      lang="en"
+      tal:omit-tag="">
+
+<head>
+  <metal:block fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
+  </metal:block>
+</head>
+
+<body>
+  <metal:main fill-slot="main">
+
+    <div class="frontpage-section" metal:define-macro="search_bar">
+      <div class="section-content" tal:attributes="style view/get_style">
+
+        <div class="col-md-6 col-md-offset-3">
+          <form action="${view/portal/absolute_url}/@@search" enctype="multipart/form-data" method="POST">
+            <input type="text" name="SearchableText" placeholder="Search something..." i18n:attributes="placeholder search_something">
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+  </metal:main>
+</body>
+
+</html>

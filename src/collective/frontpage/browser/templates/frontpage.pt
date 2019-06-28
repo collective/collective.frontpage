@@ -8,16 +8,59 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage.css">
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
+  </metal:block>
+  <metal:block fill-slot="javascript_head_slot">
+    <script src="++resource++collective.frontpage/frontpage.js"></script>
   </metal:block>
 </head>
 
 <body>
   <metal:block fill-slot="main">
-    <tal:repeat tal:repeat="section context/listFolderContents">
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_teaser" tal:condition="python: section.section_type==u'teaser'"/>
-      <div metal:use-macro="context/@@frontpage_macros/frontpage_section_static" tal:condition="python: section.section_type==u'static'"/>
-    </tal:repeat>
+
+    <tal:define tal:define="sections view/get_sections">
+
+      <tal:condition tal:condition="view/is_anonymous">
+        <tal:repeat tal:repeat="section sections">
+          <div tal:replace="structure section/html"></div>
+        </tal:repeat>
+      </tal:condition>
+
+      <tal:condition tal:condition="not:view/is_anonymous">
+        <tal:repeat tal:repeat="section sections">
+          <div class="editable-section">
+
+            <div class="section-tools" tal:define="url section/url;style section/style">
+
+              <ul>
+                <li class="shelf-item">
+                  <a class="pat-plone-modal"
+                     href="${url}/delete_confirmation"
+                     data-pat-plone-modal="{'actionOptions':{'disableAjaxFormSubmit':true,'redirectOnResponse':true}}"
+                     style="${style}">
+                    <i class="glyphicon glyphicon-trash"></i>
+                  </a>
+                </li>
+                <li class="shelf-item">
+                  <a class="pat-plone-modal"
+                     href="${url}/edit"
+                     data-pat-plone-modal="{'actionOptions':{'disableAjaxFormSubmit':true,'redirectOnResponse':true}}"
+                     style="${style}">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </a>
+                </li>
+              </ul>
+
+            </div>
+
+            <div tal:replace="structure section/html"></div>
+
+          </div>
+        </tal:repeat>
+      </tal:condition>
+
+    </tal:define>
+
   </metal:block>
 </body>
 

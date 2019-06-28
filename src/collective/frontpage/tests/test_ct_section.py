@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage.content.section import ISection
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.content.teaser import ITeaser
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
 from plone.api.exc import InvalidParameterError
 from plone.app.testing import setRoles
@@ -37,42 +35,42 @@ class SectionIntegrationTest(unittest.TestCase):
         self.parent = self.portal[parent_id]
 
     def test_ct_section_schema(self):
-        fti = queryUtility(IDexterityFTI, name="Section")
+        fti = queryUtility(IDexterityFTI, name="Teaser")
         schema = fti.lookupSchema()
-        self.assertEqual(ISection, schema)
+        self.assertEqual(ITeaser, schema)
 
     def test_ct_section_fti(self):
-        fti = queryUtility(IDexterityFTI, name="Section")
+        fti = queryUtility(IDexterityFTI, name="Teaser")
         self.assertTrue(fti)
 
     def test_ct_section_factory(self):
-        fti = queryUtility(IDexterityFTI, name="Section")
+        fti = queryUtility(IDexterityFTI, name="Teaser")
         factory = fti.factory
         obj = createObject(factory)
 
         self.assertTrue(
-            ISection.providedBy(obj), u"ISection not provided by {0}!".format(obj)
+            ITeaser.providedBy(obj), u"ITeaser not provided by {0}!".format(obj)
         )
 
     def test_ct_section_adding(self):
         setRoles(self.portal, TEST_USER_ID, ["Contributor"])
-        obj = api.content.create(container=self.parent, type="Section", id="section")
+        obj = api.content.create(container=self.parent, type="Teaser", id="section")
 
         self.assertTrue(
-            ISection.providedBy(obj), u"ISection not provided by {0}!".format(obj.id)
+            ITeaser.providedBy(obj), u"ITeaser not provided by {0}!".format(obj.id)
         )
 
     def test_ct_section_globally_not_addable(self):
         setRoles(self.portal, TEST_USER_ID, ["Contributor"])
-        fti = queryUtility(IDexterityFTI, name="Section")
+        fti = queryUtility(IDexterityFTI, name="Teaser")
         self.assertFalse(fti.global_allow, u"{0} is globally addable!".format(fti.id))
 
     def test_ct_section_filter_content_type_true(self):
         setRoles(self.portal, TEST_USER_ID, ["Contributor"])
-        fti = queryUtility(IDexterityFTI, name="Section")
+        fti = queryUtility(IDexterityFTI, name="Teaser")
         portal_types = self.portal.portal_types
         parent_id = portal_types.constructContent(
-            fti.id, self.portal, "section_id", title="Section container"
+            fti.id, self.portal, "section_id", title="Teaser container"
         )
         self.parent = self.portal[parent_id]
         with self.assertRaises(InvalidParameterError):

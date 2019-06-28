@@ -4,20 +4,12 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.frontpage">
 
-  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
   <include package="z3c.jbot" file="meta.zcml" />
-
-  <browser:jbot
-      directory="overrides"
-      layer="collective.frontpage.interfaces.ICollectiveFrontpageLayer"
-      />
-
-  <!-- Publish static files -->
-  <browser:resourceDirectory
-      name="collective.frontpage"
-      directory="static" />
+  <browser:jbot directory="overrides" layer="collective.frontpage.interfaces.ICollectiveFrontpageLayer" />
+  <browser:resourceDirectory name="collective.frontpage" directory="static" />
 
   <!-- Custom Browser Views -->
+
   <browser:page
       name="view"
       for="collective.frontpage.content.frontpage.IFrontpage"
@@ -25,20 +17,57 @@
       permission="zope2.View"
       />
 
+  <!-- Section Display Templates -->
 
   <browser:page
-      name="view"
-      for="collective.frontpage.content.section.ISection"
+      name="static_default"
+      title="Static Default"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.static.IStatic"
       permission="zope2.View"
-      class=".section.SectionView"
+      class=".static.StaticDefaultView"
       />
 
+  <!-- Teaser -->
 
   <browser:page
-      name="frontpage_macros"
-      for="*"
-      template="templates/frontpage_macros.pt"
+      name="teaser_default"
+      title="Teaser Default"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.teaser.ITeaser"
       permission="zope2.View"
+      class=".teaser.TeaserDefaultView"
+      />
+
+  <!-- Search -->
+
+  <browser:page
+      name="search_bar"
+      title="Search Bar"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.search.ISearch"
+      permission="zope2.View"
+      class=".search.SearchBarView"
+      />
+
+  <!-- Tiles -->
+
+  <browser:page
+      name="tile_cards"
+      title="Tile Cards"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.tiles.ITiles"
+      permission="zope2.View"
+      class=".tiles.TilesCardView"
+      />
+
+  <browser:page
+      name="tile_cascade"
+      title="Tile Cascade"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.tiles.ITiles"
+      permission="zope2.View"
+      class=".tiles.TilesCascadeView"
       />
 
 </configure>

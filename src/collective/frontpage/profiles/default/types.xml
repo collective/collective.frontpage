@@ -1,6 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <object name="portal_types" meta_type="Plone Types Tool">
+
+  <!-- Frontpage -->
   <object meta_type="Dexterity FTI" name="Frontpage"/>
-  <object meta_type="Dexterity FTI" name="Section"/>
   <object meta_type="Dexterity FTI" name="Item"/>
+
+  <!-- Frontpage - Section Types -->
+  <object meta_type="Dexterity FTI" name="Search"/>
+  <object meta_type="Dexterity FTI" name="Static"/>
+  <object meta_type="Dexterity FTI" name="Teaser"/>
+  <object meta_type="Dexterity FTI" name="Tiles"/>
+
 </object>

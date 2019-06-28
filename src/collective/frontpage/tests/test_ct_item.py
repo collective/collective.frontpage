@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from collective.frontpage.content.item import IItem
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -31,7 +29,7 @@ class ItemIntegrationTest(unittest.TestCase):
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
         portal_types = self.portal.portal_types
         parent_id = portal_types.constructContent(
-            "Section", self.portal, "item", title="Parent container"
+            "Teaser", self.portal, "item", title="Parent container"
         )
         self.parent = self.portal[parent_id]
 

@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.frontpage">
+
+    <include package="plone.behavior" file="meta.zcml" />
+
+    <plone:behavior
+        title="IImageFields"
+        name="collective.frontpage.IImageFields"
+        description="Standard set of image fields for an item."
+        provides=".behaviors.IImageFields"
+        />
+
+    <plone:behavior
+        title="IColorFields"
+        name="collective.frontpage.IColorFields"
+        description="Standard set of color fields for an item."
+        provides=".behaviors.IColorFields"
+        />
+
+    <plone:behavior
+        title="ILinkFields"
+        name="collective.frontpage.ILinkFields"
+        description="Standard set of link fields for an item."
+        provides=".behaviors.ILinkFields"
+        />
+
+</configure>
