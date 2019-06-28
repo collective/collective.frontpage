@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from lxml import html
+from plone import api
+from plone.memoize.view import memoize
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone import api
 
 
 class Frontpage(BrowserView):
@@ -17,6 +18,7 @@ class Frontpage(BrowserView):
     def is_anonymous(self):
         return api.user.is_anonymous()
 
+    @memoize
     def get_sections(self):
         contents = self.context.listFolderContents()
         section_list = list()

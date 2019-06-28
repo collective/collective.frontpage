@@ -52,7 +52,7 @@ class ISectionFieldsMarker(Interface):
     """
 
 
-class ISectionLinkItem(model.Schema):
+class ILinkFields(model.Schema):
 
     link_url = schema.URI(
         title=_(u"Link URL"),
@@ -65,11 +65,11 @@ class ISectionLinkItem(model.Schema):
     )
 
 
-alsoProvides(ISectionLinkItem, IFormFieldProvider)
+alsoProvides(ILinkFields, IFormFieldProvider)
 
 
-class ISectionLinkItemMarker(Interface):
+class ILinkFieldsMarker(Interface):
     """
     Marker interface that will be provided by instances using the
-    ISectionLinkItem behavior.
+    ILinkFields behavior.
     """

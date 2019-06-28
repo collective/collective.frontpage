@@ -13,10 +13,10 @@
         />
 
     <plone:behavior
-        title="ISectionLinkItem"
-        name="collective.frontpage.ISectionLinkItem"
-        description="Standard set of fields for a Frontpage link section."
-        provides=".behaviors.ISectionLinkItem"
+        title="ILinkFields"
+        name="collective.frontpage.ILinkFields"
+        description="Standard set of link fields for a Frontpage section."
+        provides=".behaviors.ILinkFields"
         />
 
 </configure>

@@ -8,8 +8,6 @@
   <browser:jbot directory="overrides" layer="collective.frontpage.interfaces.ICollectiveFrontpageLayer" />
   <browser:resourceDirectory name="collective.frontpage" directory="static" />
 
-  <include file="cache.zcml"/>
-
   <!-- Custom Browser Views -->
 
   <browser:page

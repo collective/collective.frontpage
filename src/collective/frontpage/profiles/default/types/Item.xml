@@ -32,9 +32,8 @@
   <property name="behaviors" purge="false">
     <element value="plone.app.content.interfaces.INameFromTitle"/>
     <element value="plone.app.dexterity.behaviors.exclfromnav.IExcludeFromNavigation"/>
-    <element value="plone.app.dexterity.behaviors.id.IShortName"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-    <element value="collective.frontpage.ISectionLinkItem"/>
+    <element value="collective.frontpage.ILinkFields"/>
   </property>
 
   <!-- View information -->
