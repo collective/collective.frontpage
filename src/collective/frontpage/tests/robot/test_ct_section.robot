@@ -60,11 +60,11 @@ an add Frontpage form
 
 an add Section form
   Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  Go To  ${PLONE_URL}/my-frontpage/++add++Section
+  Go To  ${PLONE_URL}/my-frontpage/++add++Static
 
 a Section 'My Section'
   ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  Create content  type=Static  container=${uid}  id=my-section  title=My Section
 
 # --- WHEN -------------------------------------------------------------------
 
