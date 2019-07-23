@@ -19,10 +19,13 @@ install:
 jobs:
   include:
     - stage: code-analysis
+      name: "Code Analysis"
       script: bin/code-analysis
     - stage: tests
+      name: "Unit Tests"
       script: bin/test
     - stage: tests # same stage as unit tests to run in parallel
+      name: "Integration Tests"
       script:
         - export DISPLAY=:99.0
         - sh -e /etc/init.d/xvfb start
@@ -30,6 +33,7 @@ jobs:
         - firefox -v
         - bin/test --all -t .robot
     - stage: coverage
+      name: "Test Coverage"
       script:
         - bin/createcoverage
         - bin/pip install coverage
