@@ -29,9 +29,10 @@ jobs:
         - sleep 3 # give xvfb some time to start
         - firefox -v
         - bin/test --all -t .robot
-after_success:
-  - bin/createcoverage
-  - bin/pip install coverage
-  - bin/python -m coverage.pickle2json
-  - pip install coveralls
-  - coveralls
+    - stage: coverage
+      script:
+        - bin/createcoverage
+        - bin/pip install coverage
+        - bin/python -m coverage.pickle2json
+        - pip install coveralls
+        - coveralls
