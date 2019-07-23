@@ -57,12 +57,12 @@ a logged-in site administrator
 
 an add Item form
   ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  Create content  type=Static  container=${uid}  id=my-section  title=My Section
   Go To  ${PLONE_URL}/my-frontpage/my-section/++add++Item
 
 a Item 'My Item'
   ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  ${uid} =  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  ${uid} =  Create content  type=Static  container=${uid}  id=my-section  title=My Section
   Create content  type=Item  container=${uid}  id=my-item  title=My Item
 
 # --- WHEN -------------------------------------------------------------------

@@ -15,14 +15,20 @@ install:
   - bin/pip install -r requirements.txt
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True annotate
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True
-before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
-  - sleep 3 # give xvfb some time to start
-  - firefox -v
-script:
-  - bin/code-analysis
-  - bin/test
+
+jobs:
+  include:
+    - stage: code-analysis
+      script: bin/code-analysis
+    - stage: tests
+      script: bin/test
+    - stage: tests # same stage as unit tests to run in parallel
+      script:
+        - export DISPLAY=:99.0
+        - sh -e /etc/init.d/xvfb start
+        - sleep 3 # give xvfb some time to start
+        - firefox -v
+        - bin/test --all -t .robot
 after_success:
   - bin/createcoverage
   - bin/pip install coverage
