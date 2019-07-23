@@ -31,6 +31,9 @@ jobs:
         - sh -e /etc/init.d/xvfb start
         - sleep 3 # give xvfb some time to start
         - firefox -v
+        - wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+        - tar -xzf geckodriver-v0.24.0-linux64.tar.gz -C bin
+        - export PATH=$(pwd)/bin:$PATH
         - bin/test --all -t .robot
     - stage: coverage
       name: "Test Coverage"
