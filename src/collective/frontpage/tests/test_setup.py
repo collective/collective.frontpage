@@ -30,6 +30,11 @@ class TestSetup(unittest.TestCase):
 
         self.assertIn(ICollectiveFrontpageLayer, utils.registered_layers())
 
+    def test_frontpage_in_default_page_types(self):
+        values = api.portal.get_registry_record("plone.default_page_types")
+        self.assertIn('Frontpage', values)
+        self.assertTrue(len(values) > 1)
+
 
 class TestUninstall(unittest.TestCase):
 
