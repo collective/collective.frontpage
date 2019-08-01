@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-06-26 12:15+0000\n"
+"POT-Creation-Date: 2019-08-01 12:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,11 @@ msgid "A search section for a Frontpage."
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Static.xml
-msgid "A static section for a Frontpage. Can contain Items."
+msgid "A static section for a Frontpage."
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Teaser.xml
-msgid "A teaser section for a Frontpage. Can contain Items."
+msgid "A teaser section for a Frontpage."
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Tiles.xml
@@ -76,11 +76,15 @@ msgid "Frontpage Settings"
 msgstr ""
 
 #: collective/frontpage/behaviors.zcml
-msgid "ISectionFields"
+msgid "IColorFields"
 msgstr ""
 
 #: collective/frontpage/behaviors.zcml
-msgid "ISectionLinkItem"
+msgid "IImageFields"
+msgstr ""
+
+#: collective/frontpage/behaviors.zcml
+msgid "ILinkFields"
 msgstr ""
 
 #: collective/frontpage/configure.zcml
@@ -111,20 +115,36 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: collective/frontpage/behaviors.zcml
-msgid "Standard set of fields for a Frontpage link section."
+#: collective/frontpage/browser/configure.zcml
+msgid "Search Bar"
 msgstr ""
 
 #: collective/frontpage/behaviors.zcml
-msgid "Standard set of fields for a Frontpage section."
+msgid "Standard set of color fields for an item."
+msgstr ""
+
+#: collective/frontpage/behaviors.zcml
+msgid "Standard set of image fields for an item."
+msgstr ""
+
+#: collective/frontpage/behaviors.zcml
+msgid "Standard set of link fields for an item."
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Static.xml
 msgid "Static"
 msgstr ""
 
+#: collective/frontpage/browser/configure.zcml
+msgid "Static Default"
+msgstr ""
+
 #: collective/frontpage/profiles/default/types/Teaser.xml
 msgid "Teaser"
+msgstr ""
+
+#: collective/frontpage/browser/configure.zcml
+msgid "Teaser Default"
 msgstr ""
 
 #: collective/frontpage/behaviors.py
@@ -132,11 +152,19 @@ msgid "The background-color will always be on top of the background-image. Make 
 msgstr ""
 
 #: collective/frontpage/behaviors.py
-msgid "The primary color used for icons and buttons."
+msgid "The primary color used for text, icons and buttons."
 msgstr ""
 
 #: collective/frontpage/behaviors.py
-msgid "This sets a fullscreen-background to the section. Make sure to use a semi-transparent or fully transparent background-color to see the image."
+msgid "This sets a background image to an item. Make sure to use a semi-transparent or fully transparent background-color to see the image."
+msgstr ""
+
+#: collective/frontpage/browser/configure.zcml
+msgid "Tile Cards"
+msgstr ""
+
+#: collective/frontpage/browser/configure.zcml
+msgid "Tile Cascade"
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Tiles.xml
@@ -173,7 +201,7 @@ msgstr ""
 msgid "item_contenttype_icon_title_icon"
 msgstr ""
 
-#. Default: "Image"
-#: collective/frontpage/content/item.py
-msgid "item_contenttype_image_title_icon"
+#. Default: "Search something..."
+#: collective/frontpage/browser/templates/sections/search_bar.pt
+msgid "search_something"
 msgstr ""

@@ -11,7 +11,7 @@
 
   <property
       i18n:translate=""
-      name="description">A teaser section for a Frontpage. Can contain Items.</property>
+      name="description">A teaser section for a Frontpage.</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Teaser</property>
