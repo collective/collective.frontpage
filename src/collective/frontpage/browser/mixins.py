@@ -1,9 +1,26 @@
 # -*- coding: utf-8 -*-
 
+from plone import api
+
 import ast
 
 
 class SectionsViewMixin(object):
+
+    def __call__(self):
+        self.portal = api.portal.get()
+        self.contents = self.context.listFolderContents()
+        if not self._redirect_anonymous():
+            return self.template()
+
+    def _redirect_anonymous(self):
+        from_fp = self.request.get('from_fp', False)
+        if not from_fp and api.user.is_anonymous():
+            parent = self.context.aq_parent.absolute_url()
+            self.request.response.redirect(parent)
+            return True
+        else:
+            return False
 
     def text_color(self, section):
         if section.background_image:

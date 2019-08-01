@@ -25,6 +25,7 @@ class Frontpage(BrowserView):
         for section in contents:
             section_url = section.absolute_url()
             section_view = section.unrestrictedTraverse(section.getLayout())
+            section_view.request.set('from_fp', True)
             section_view.request.set('ajax_load', 'True')
             tree = html.fromstring(section_view())
             parsed_html = tree.xpath(

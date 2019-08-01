@@ -13,6 +13,3 @@ class StaticDefaultView(StaticBase):
     """StaticDefaultView base class"""
 
     template = ViewPageTemplateFile("templates/sections/static_default.pt")
-
-    def __call__(self):
-        return self.template()

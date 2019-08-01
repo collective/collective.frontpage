@@ -14,16 +14,8 @@ class TilesCardView(TilesBase):
 
     template = ViewPageTemplateFile("templates/sections/tile_cards.pt")
 
-    def __call__(self):
-        self.contents = self.context.listFolderContents()
-        return self.template()
-
 
 class TilesCascadeView(TilesBase):
     """TilesCascadeView base class"""
 
     template = ViewPageTemplateFile("templates/sections/tile_cascade.pt")
-
-    def __call__(self):
-        self.contents = self.context.listFolderContents()
-        return self.template()
