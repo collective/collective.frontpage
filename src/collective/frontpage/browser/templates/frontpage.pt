@@ -34,6 +34,13 @@
 
               <ul>
                 <li class="shelf-item">
+                  <a class=""
+                     href="${url}/view"
+                     style="${style}">
+                    <i class="glyphicon glyphicon-eye-open"></i>
+                  </a>
+                </li>
+                <li class="shelf-item">
                   <a class="pat-plone-modal"
                      href="${url}/delete_confirmation"
                      data-pat-plone-modal="{'actionOptions':{'disableAjaxFormSubmit':true,'redirectOnResponse':true}}"
