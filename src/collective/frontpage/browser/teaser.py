@@ -13,6 +13,3 @@ class TeaserDefaultView(TeaserBase):
     """TeaserDefaultView base class"""
 
     template = ViewPageTemplateFile("templates/sections/teaser_default.pt")
-
-    def __call__(self):
-        return self.template()
