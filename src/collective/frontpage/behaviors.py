@@ -86,3 +86,28 @@ class ILinkFieldsMarker(Interface):
     Marker interface that will be provided by instances using the
     ILinkFields behavior.
     """
+
+
+class IVideoFields(model.Schema):
+
+    video_poster_url = schema.TextLine(
+        title=_(u"Video Poster URL"),
+        description=u"The url to a static image poster placeholder for the video",
+        required=False,
+    )
+
+    video_url = schema.TextLine(
+        title=u"Video Src URL",
+        description=u"The url to a video. MP4 is recommended.",
+        required=False,
+    )
+
+
+alsoProvides(IVideoFields, IFormFieldProvider)
+
+
+class IVideoFieldsMarker(Interface):
+    """
+    Marker interface that will be provided by instances using the
+    IVideoFields behavior.
+    """

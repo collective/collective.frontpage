@@ -26,4 +26,11 @@
         provides=".behaviors.ILinkFields"
         />
 
+    <plone:behavior
+        title="IVideoFields"
+        name="collective.frontpage.IVideoFields"
+        description="Standard set of video fields for an item."
+        provides=".behaviors.IVideoFields"
+        />
+
 </configure>
