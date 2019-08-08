@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-01 12:56+0000\n"
+"POT-Creation-Date: 2019-08-08 12:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,10 @@ msgstr ""
 
 #: collective/frontpage/profiles/default/types/Frontpage.xml
 msgid "A container for Frontpage sections."
+msgstr ""
+
+#: collective/frontpage/profiles/default/types/News.xml
+msgid "A news section for a Frontpage. Can contain News Items."
 msgstr ""
 
 #: collective/frontpage/profiles/default/types/Search.xml
@@ -63,7 +67,7 @@ msgstr ""
 
 #: collective/frontpage/profiles/default/types/Frontpage.xml
 #: collective/frontpage/profiles/default/types/Item.xml
-#: collective/frontpage/profiles/default/types/Search.xml
+#: collective/frontpage/profiles/default/types/News.xml
 msgid "Edit"
 msgstr ""
 
@@ -105,6 +109,14 @@ msgstr ""
 
 #: collective/frontpage/behaviors.py
 msgid "Link URL"
+msgstr ""
+
+#: collective/frontpage/profiles/default/types/News.xml
+msgid "News"
+msgstr ""
+
+#: collective/frontpage/browser/configure.zcml
+msgid "News Default"
 msgstr ""
 
 #: collective/frontpage/behaviors.py
@@ -177,7 +189,7 @@ msgstr ""
 
 #: collective/frontpage/profiles/default/types/Frontpage.xml
 #: collective/frontpage/profiles/default/types/Item.xml
-#: collective/frontpage/profiles/default/types/Search.xml
+#: collective/frontpage/profiles/default/types/News.xml
 msgid "View"
 msgstr ""
 

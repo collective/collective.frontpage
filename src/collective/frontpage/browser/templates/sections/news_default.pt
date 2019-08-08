@@ -1,0 +1,47 @@
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+         metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
+         i18n:domain="collective.frontpage"
+      lang="en"
+         tal:omit-tag="">
+
+<head>
+    <metal:block fill-slot="style_slot">
+        <link rel="stylesheet" type="text/css"
+              href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
+    </metal:block>
+</head>
+
+<body>
+<metal:main fill-slot="main">
+
+    <div class="frontpage-section" metal:define-macro="static_default">
+        <div class="section-content container" tal:attributes="style view/get_style">
+
+            <div class="section-text col-md-6 col-md-offset-3">
+                <h2 class="section-title">${context/title}</h2>
+                <p class="section-description" tal:condition="context/description">${context/description}</p>
+            </div>
+
+            <div class="cards col-md-12" tal:define="news_items view/get_news">
+                <tal:repeat tal:repeat="news_item news_items">
+                    <div class="card fill col-md-3" style="background-color: ${context/primary_color}; color: ${python: view.button_text_color(context)}">
+                        <a href="${news_item/url}">
+                            <img tal:replace="structure python:news_item.get('scaled_image').tag(css_class='card-graphic')" tal:condition="news_item/scaled_image" />
+                            <h4 class="card-heading">${news_item/title}</h4>
+                            <p class="card-description">${news_item/description}</p>
+                        </a>
+                    </div>
+
+                </tal:repeat>
+            </div>
+
+        </div>
+    </div>
+
+</metal:main>
+</body>
+
+</html>
