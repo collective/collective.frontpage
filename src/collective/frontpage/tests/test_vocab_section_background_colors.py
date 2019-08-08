@@ -31,12 +31,12 @@ class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
 
     def test_create_simple_terms(self):
         items = SectionColors._get_colors_from_registry()
-        # Should return 8 items
-        self.assertEqual(len(SectionColors._create_simple_terms(items)), 8)
-        # Should return 8 items again, because of duplicates
+        # Should return 142 items
+        self.assertEqual(len(SectionColors._create_simple_terms(items)), 142)
+        # Should return 142 items again, because of duplicates
         icol = copy.deepcopy(items[0])
         items.append(icol)
-        self.assertEqual(len(SectionColors._create_simple_terms(items)), 8)
+        self.assertEqual(len(SectionColors._create_simple_terms(items)), 142)
 
     def test_vocab_section_background_colors(self):
 
