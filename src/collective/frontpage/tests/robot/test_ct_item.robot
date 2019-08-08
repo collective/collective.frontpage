@@ -75,16 +75,16 @@ I submit the form
 
 I go to the Item view
   Go To  ${PLONE_URL}/my-frontpage/my-section/my-item
-  Wait until page contains  Site Map
+  Wait until page contains  Home
 
 
 # --- THEN -------------------------------------------------------------------
 
 a Item with the title '${title}' has been created
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
   Page should contain  Item created
 
 I can see the Item title '${title}'
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
