@@ -46,7 +46,7 @@
       class=".teaser.TeaserDefaultView"
       />
 
-    <!-- News -->
+  <!-- News -->
 
   <browser:page
       name="news_default"
