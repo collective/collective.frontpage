@@ -43,6 +43,18 @@ class SectionsViewMixin(object):
         )
         return (bg_image if self.context.background_image else bg_color) + ';' + text_color  # noqa: 501
 
+    def get_item_style(self, item):
+        bg_image = 'background-image:url({0}/@@images/background_image)'.format(
+            item.absolute_url()
+        )
+        bg_color = 'background-color:{0}'.format(
+            self.context.primary_color
+        )
+        text_color = 'color:{0}'.format(
+            self.button_text_color(self.context)
+        )
+        return (bg_image if item.background_image else bg_color) + ';' + text_color  # noqa: 501
+
     @staticmethod
     def _contrasting_text_color(value):
         """

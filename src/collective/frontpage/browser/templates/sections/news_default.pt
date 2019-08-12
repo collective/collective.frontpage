@@ -9,8 +9,8 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css"
-          href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
+    <?python from collective.frontpage.css import css_date;  ?>
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-${python:css_date}.css">
   </metal:block>
 </head>
 

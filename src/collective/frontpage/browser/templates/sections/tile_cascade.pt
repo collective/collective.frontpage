@@ -9,7 +9,8 @@
 
 <head>
   <metal:block fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
+    <?python from collective.frontpage.css import css_date;  ?>
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-${python:css_date}.css">
   </metal:block>
 </head>
 
@@ -26,7 +27,7 @@
 
         <div class="tiles cards cascade" tal:define="items view/contents|nothing" tal:condition="items">
           <tal:repeat tal:repeat="item items">
-            <div class="card" style="background-color: ${context/primary_color}; color: ${python: view.button_text_color(context)}">
+            <div class="card" style="${python: view.get_item_style(item)}">
               <div class="card-icon">
                 <i class="glyphicon glyphicon-${item/icon}"></i>
               </div>
