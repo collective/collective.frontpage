@@ -10,5 +10,6 @@
   <object meta_type="Dexterity FTI" name="Static"/>
   <object meta_type="Dexterity FTI" name="Teaser"/>
   <object meta_type="Dexterity FTI" name="Tiles"/>
+  <object meta_type="Dexterity FTI" name="News"/>
 
 </object>
