@@ -57,15 +57,21 @@ class SectionColors(object):
         for item in items:
             try:
                 if item:
-                    term = SimpleTerm(
-                        value=item.token, token=str(item.token), title=item.value
-                    )
                     if item.token in [x.value for x in terms]:
-                        logger.warning(
-                            "Could not add {color}, because it is already "
-                            "defined in {list}.".format(color=item.value, list=terms)
-                        )
+                            logger.warning(
+                                "Could not add {color} ({color_hex}), "
+                                "because it is already defined "
+                                "as {duplicate}({duplicate_hex}).".format(
+                                    color=item.value,
+                                    duplicate=x.title,
+                                    color_hex=item.token,
+                                    duplicate_hex=x.token
+                                )
+                            )
                     else:
+                        term = SimpleTerm(
+                            value=item.token, token=str(item.token), title=item.value
+                        )
                         terms.append(term)
             except UnicodeEncodeError:
                 logger.exception(
