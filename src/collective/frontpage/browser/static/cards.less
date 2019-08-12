@@ -1,0 +1,62 @@
+.cards {
+  color: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  float: none !important;
+
+  .card {
+    color: inherit;
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 2px 4px rgba(3, 27, 78, 0.06);
+    cursor: pointer;
+    margin: 15px;
+    padding: 0;
+    text-align: center;
+
+    &.blank {
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    &.fill {
+      background-color: white;
+    }
+
+    &.inactive:hover {
+      box-shadow: 0 2px 4px rgba(3, 27, 78, 0.06);
+      cursor: default;
+    }
+
+    &:hover {
+      box-shadow: 0 10px 20px rgba(3, 27, 78, 0.1);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .vendor(transition, all 150ms ease-in-out);
+
+    .card-graphic {
+      font-size: 3em;
+      margin-bottom: 30px;
+      display: inline-block;
+      width: 100%;
+      height: auto;
+    }
+
+    .card-heading {
+      font-weight: 500;
+      line-height: 1.5;
+      margin: 0 20px 20px 20px;
+      position: relative;
+    }
+
+    .card-description {
+      font-weight: 400;
+      margin: 20px;
+    }
+  }
+}

@@ -71,16 +71,16 @@ I submit the form
 
 I go to the Frontpage view
   Go To  ${PLONE_URL}/my-frontpage
-  Wait until page contains  Site Map
+  Wait until page contains  Home
 
 
 # --- THEN -------------------------------------------------------------------
 
 a Frontpage with the title '${title}' has been created
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
   Page should contain  Item created
 
 I can see the Frontpage title '${title}'
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
