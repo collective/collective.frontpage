@@ -11,13 +11,13 @@
     <?python from collective.frontpage.css import css_date;  ?>
     <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-${python:css_date}.css">
   </metal:block>
-  <metal:block fill-slot="javascript_head_slot">
+  <metal:block fill-slot="script_slot">
     <script src="++resource++collective.frontpage/frontpage.js"></script>
   </metal:block>
 </head>
 
 <body>
-  <metal:block fill-slot="main">
+  <metal:block fill-slot="fluid">
 
     <tal:define tal:define="sections view/get_sections">
 

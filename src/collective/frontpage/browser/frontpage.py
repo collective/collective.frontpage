@@ -9,11 +9,16 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 class Frontpage(BrowserView):
 
-    template = ViewPageTemplateFile("templates/frontpage.pt")
+    template_fallback = ViewPageTemplateFile("templates/frontpage_fallback.pt")
+    template = ViewPageTemplateFile("templates/frontpage_tokyo.pt")
 
     def __call__(self):
         self.section_classname = 'frontpage-section'
-        return self.template()
+        self.installer = api.portal.get_tool("portal_quickinstaller")
+        if self.installer.isProductInstalled("plonetheme.tokyo"):
+            return self.template()
+        else:
+            return self.template_fallback()
 
     def is_anonymous(self):
         return api.user.is_anonymous()
