@@ -14,8 +14,8 @@ class Frontpage(BrowserView):
 
     def __call__(self):
         self.section_classname = 'frontpage-section'
-        self.installer = api.portal.get_tool("portal_quickinstaller")
-        if self.installer.isProductInstalled("plonetheme.tokyo"):
+        self.installer = api.portal.get_tool('portal_quickinstaller')
+        if self.installer.isProductInstalled('plonetheme.tokyo'):
             return self.template()
         else:
             return self.template_fallback()
