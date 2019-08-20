@@ -11,10 +11,10 @@ def get_translated(text, context, domain="plone", multi_domain=False):
     e.g. Fetching Plone default translations.
     """
     if context:
-        request = context.request
+        request = context.REQUEST
         language_id = request.response.headers.get("content-language", None)
         if language_id:
-            translated = translate(text, domain=domain, target_language=language_id)
+            translated = translate(text, domain=domain, target_language=language_id)  # noqa: 501
             if multi_domain:
                 if translated != text:
                     return translated

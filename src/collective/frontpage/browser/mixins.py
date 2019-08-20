@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from plone import api
+from collective.frontpage.utils import get_user
+import datetime
+from collective.frontpage import _
+from collective.frontpage.utils import get_translated
 
 import ast
 
@@ -21,6 +25,56 @@ class SectionsViewMixin(object):
             return True
         else:
             return False
+
+    def get_user_data(self):
+        user = get_user()
+        mtool = api.portal.get_tool('portal_membership')
+        portrait = mtool.getPersonalPortrait(id=user[1])
+        info = mtool.getMemberInfo(user[1])
+        portal_url = self.portal.absolute_url()
+        data = {
+            'info': info,
+            'portrait': portrait.absolute_url(),
+            'user_url': portal_url + '/@@personal-information',
+        }
+        return data
+
+    def get_greeting(self):
+        # Defaults
+        currentTime = datetime.datetime.now()
+        info = self.get_user_data().get('info')
+        # Messages
+        date_text = get_translated(_(
+            u'date_text',
+            default=u'Today is ${day}, the ${date} at ${time}.',
+            mapping={
+                'day': currentTime.strftime('%A'),
+                'date': currentTime.strftime('%d. %B %Y'),
+                'time': currentTime.strftime('%H:%M'),
+            },
+        ), self.context)
+        pre_text = u'{greeting}, {name}.'
+        if not api.user.is_anonymous():
+            name = (info['fullname'] or info['username'])
+            if currentTime.hour < 12:
+                msg = get_translated(_(
+                    u'greet_morning',
+                    default='Good morning'
+                ), self.context)
+                return (pre_text.format(greeting=msg, name=name), date_text)
+            elif 12 <= currentTime.hour < 18:
+                msg = get_translated(_(
+                    u'greet_afternoon',
+                    default='Good afternoon'
+                ), self.context)
+                return (pre_text.format(greeting=msg, name=name), date_text)
+            else:
+                msg = get_translated(_(
+                    u'greet_evening',
+                    default='Good evening'
+                ), self.context)
+                return (pre_text.format(greeting=msg, name=name), date_text)
+        return ('', date_text)
 
     def text_color(self, section):
         if section.background_image:

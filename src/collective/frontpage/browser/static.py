@@ -13,3 +13,9 @@ class StaticDefaultView(StaticBase):
     """StaticDefaultView base class"""
 
     template = ViewPageTemplateFile("templates/sections/static_default.pt")
+
+
+class StaticWelcomeView(StaticBase):
+    """StaticWelcomeView base class"""
+
+    template = ViewPageTemplateFile("templates/sections/static_welcome.pt")

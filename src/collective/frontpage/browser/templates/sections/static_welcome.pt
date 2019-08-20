@@ -1,0 +1,44 @@
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
+      i18n:domain="collective.frontpage"
+      lang="en"
+      tal:omit-tag="">
+
+<head>
+  <metal:block fill-slot="style_slot">
+    <?python from collective.frontpage.css import css_date;  ?>
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-${python:css_date}.css">
+  </metal:block>
+</head>
+
+<body>
+  <metal:main fill-slot="main">
+
+    <div class="frontpage-section" metal:define-macro="static_welcome">
+      <div class="section-content"
+           tal:attributes="style view/get_style"
+           tal:define="greeting view/get_greeting">
+
+          <style>
+            .welcome-text.${context/id} .welcome-title:after {
+              background-color: ${python:view._contrasting_text_color(context.background_color)};
+            }
+
+          </style>
+
+        <div class="welcome-text ${context/id}"
+             tal:define="title python:greeting[0]; desc python:greeting[1]">
+          <span class="welcome-title" tal:condition="title">${title}</span>
+          <span class="welcome-desc" tal:condition="desc">${desc}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </metal:main>
+</body>
+
+</html>
