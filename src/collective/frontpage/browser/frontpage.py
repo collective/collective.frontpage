@@ -4,21 +4,11 @@ from lxml import html
 from plone import api
 from plone.memoize.view import memoize
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class Frontpage(BrowserView):
 
-    template_fallback = ViewPageTemplateFile("templates/frontpage_fallback.pt")
-    template = ViewPageTemplateFile("templates/frontpage_tokyo.pt")
-
-    def __call__(self):
-        self.section_classname = 'frontpage-section'
-        self.installer = api.portal.get_tool('portal_quickinstaller')
-        if self.installer.isProductInstalled('plonetheme.tokyo'):
-            return self.template()
-        else:
-            return self.template_fallback()
+    section_classname = 'frontpage-section'
 
     def is_anonymous(self):
         return api.user.is_anonymous()
