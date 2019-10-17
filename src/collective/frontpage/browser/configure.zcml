@@ -11,7 +11,7 @@
 
   <!-- Custom Browser Views -->
 
-  <browser:page zcml:condition="have plonetheme-tokyo"
+  <browser:page zcml:condition="installed plonetheme.tokyo"
       name="view"
       for="collective.frontpage.content.frontpage.IFrontpage"
       class=".frontpage.Frontpage"
@@ -19,7 +19,7 @@
       permission="zope2.View"
       />
 
-  <browser:page zcml:condition="not-have plonetheme-tokyo"
+  <browser:page zcml:condition="not-installed plonetheme.tokyo"
       name="view"
       for="collective.frontpage.content.frontpage.IFrontpage"
       class=".frontpage.Frontpage"
