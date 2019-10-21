@@ -32,10 +32,13 @@ def demo(context):
     portal = api.portal.get()
     frontpage = _create_frontpage(portal)
     _create_teaser_section(frontpage)
-    _create_news_section(frontpage)
+    _create_tiles_section(frontpage)
     _create_static_section(frontpage)
+    _create_news_section(frontpage)
+    _create_search_section(frontpage)
     _remove_default_pages(portal)
     _create_dummy_user()
+    _set_mark_special_links()
 
 
 def _create_frontpage(portal):
@@ -47,17 +50,59 @@ def _create_frontpage(portal):
     return frontpage
 
 
+def _create_teaser_section(frontpage):
+    section = api.content.create(
+        type="Teaser",
+        container=frontpage,
+        id="section-teaser-default",
+        title=u"Welcome to\ncollective.frontpage",
+        description="Creating Plone Frontpages Made Easy.",
+        link_title="Try it now!",
+        link_url="https://github.com/collective/collective.frontpage",
+        background_color=u"#0083BE",
+        primary_color=u"#F5F5F5",
+        background_image=_create_lead_image(size=(1600, 1200), color="#0083BE")
+    )
+    api.content.transition(obj=section, transition="publish")
+
+
+def _create_tiles_section(frontpage):
+    section = api.content.create(
+        type="Tiles",
+        container=frontpage,
+        id="section-tiles-default",
+        title=u"Tired?",
+        description="Are you bored of creating the same and same frontpages and landingpages for your projects? Always the same elements - only the texts are changing? Shouldn't the content managers do this? That's the point of a CMS!",  # noqa
+        background_color=u"#F5F5F5",
+        primary_color=u"#0083BE",
+    )
+    api.content.transition(obj=section, transition="publish")
+    titles = ('Easy & Fast', 'Configurable', 'Extendable')
+    icons = ('road', 'cog', 'heart')
+    descriptions = ('Simply click your Plone Frontpage together in a few minutes.\r\nEveryone can do it!', 'Let your content creators manage sections.\nAdmins specify which colors they can use.', 'The most important sections are available already.\nStill a lot is missing...\nBut this is Open Source!\nYou can add whatever you need yourself!')  # noqa
+    for i in (0, 1, 2):
+        ni = api.content.create(
+            type="Item",
+            container=section,
+            id="item-{0}".format(i).lower(),
+            title=u"{0}".format(titles[i]),
+            description=descriptions[i],
+            icon=u"{0}".format(icons[i]),
+        )
+        api.content.transition(obj=ni, transition="publish")
+
+
 def _create_static_section(frontpage):
     section = api.content.create(
         type="Static",
         container=frontpage,
         id="section-static-default",
-        title=u"Example Static",
-        description="This is an example of a static frontpage section.",
+        title=u"A Landing page for your needs!",
+        description="This Plone AddOn adds a bunch of new content types.\nFirst of all you need add a 'frontpage', then you can add different types of 'sections'. Some sections (like Tiles) can have 'items'.\nAnd that's it. No magic involved.",  # noqa
         background_color=u"#0083BE",
         primary_color=u"#F5F5F5",
         link_url="https://github.com/collective/collective.frontpage",
-        link_title="GitHub Homepage",
+        link_title="Check out the built-in section tpyes",
     )
     api.content.transition(obj=section, transition="publish")
 
@@ -67,8 +112,8 @@ def _create_news_section(frontpage):
         type="News",
         container=frontpage,
         id="section-news-default",
-        title=u"Example News Section",
-        description="This is an example of a event frontpage section.",
+        title=u"Your News Section",
+        description="This is an example of a news frontpage section.",
         background_color=u"#F5F5F5",
         primary_color=u"#0083BE",
     )
@@ -85,13 +130,13 @@ def _create_news_section(frontpage):
         api.content.transition(obj=ni, transition="publish")
 
 
-def _create_teaser_section(frontpage):
+def _create_search_section(frontpage):
     section = api.content.create(
-        type="Teaser",
+        type="Search",
         container=frontpage,
-        id="section-teaser-default",
-        title=u"Example Teaser",
-        description="This is an example of a fullscreen frontpage section.",
+        id="section-search-default",
+        title=u"Search this website here",
+        description="This is an example of a search frontpage section.",
         background_color=u"#0083BE",
         primary_color=u"#F5F5F5",
     )
@@ -165,3 +210,8 @@ def _create_dummy_user():
         password="testing@collective.frontpage",
         properties={"fullname": u"Max Mustermann"},
     )
+
+
+def _set_mark_special_links(value=False):
+    """Removes external link icon"""
+    api.portal.set_registry_record('plone.mark_special_links', value)
