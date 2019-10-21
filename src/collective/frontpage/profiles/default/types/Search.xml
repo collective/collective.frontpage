@@ -44,6 +44,7 @@
   <property name="immediate_view">search_bar</property>
   <property name="view_methods">
     <element value="search_bar"/>
+    <element value="frontpage_section_search"/>
   </property>
 
   <!-- Method aliases -->

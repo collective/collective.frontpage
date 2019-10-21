@@ -4,6 +4,7 @@ from collective.frontpage.browser.mixins import SectionsViewMixin
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from BeautifulSoup import BeautifulSoup
+
 import re
 
 

@@ -6,6 +6,37 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from plone import api
 
 
+class FrontpageSearchView(SectionsViewMixin, BrowserView):
+
+    template = ViewPageTemplateFile('templates/search.pt')
+
+    def __call__(self):
+        self.layout = self.context.getLayout()
+        self.contents = self.context.listFolderContents()
+        self.portal = api.portal.get()
+        return self.template()
+
+    def get_portal_url(self):
+        return self.portal.absolute_url()
+
+    def get_style(self):
+        bg_image = 'background-image:url({0}/@@images/background_image)'.format(  # noqa: 501
+            self.context.absolute_url()
+        )
+        bg_color = 'background-color:{0}'.format(
+            self.context.background_color
+        )
+        text_color = 'color:{0}'.format(
+            self.text_color(self.context)
+        )
+        return (bg_image if self.context.background_image else bg_color) + ';' + text_color  # noqa: 501
+
+
+class FrontpageSearchCleanView(FrontpageSearchView):
+
+    template = ViewPageTemplateFile('templates/search_clean.pt')
+
+
 class SectionsView(SectionsViewMixin, BrowserView):
 
     template = ViewPageTemplateFile('templates/sections.pt')

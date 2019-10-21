@@ -57,6 +57,22 @@
       class=".sections.SectionsView"
       />
 
+  <browser:page
+      name="frontpage_section_search"
+      title="Search"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.search.ISearch"
+      permission="zope2.View"
+      class=".sections.FrontpageSearchView"
+      />
+
+  <browser:page
+      name="frontpage_section_search_clean"
+      for="collective.frontpage.content.search.ISearch"
+      permission="zope2.View"
+      class=".sections.FrontpageSearchCleanView"
+      />
+
   <!-- Tiles -->
 
   <browser:page
