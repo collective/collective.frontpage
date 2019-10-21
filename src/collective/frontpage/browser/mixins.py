@@ -50,9 +50,8 @@ class SectionsViewMixin(object):
         bg_color = 'background-color:{0}'.format(
             self.context.primary_color
         )
-        text_color = 'color:{0}'.format(
-            self.button_text_color(self.context)
-        )
+        text_color_value = "#FFF" if item.background_image else self.button_text_color(self.context)  # noqa: 501
+        text_color = 'color:{0}'.format(text_color_value)
         return (bg_image if item.background_image else bg_color) + ';' + text_color  # noqa: 501
 
     @staticmethod
