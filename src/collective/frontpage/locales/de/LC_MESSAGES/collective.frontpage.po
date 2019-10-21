@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2019-08-08 12:22+0000\n"
+"POT-Creation-Date: 2019-08-20 09:37+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -190,6 +190,15 @@ msgstr ""
 msgid "View"
 msgstr ""
 
+#: collective/frontpage/browser/configure.zcml
+msgid "Welcome Section"
+msgstr ""
+
+#. Default: "Today is ${day}, the ${date} at ${time}."
+#: collective/frontpage/browser/mixins.py
+msgid "date_text"
+msgstr "Heute ist ${day}, der ${date}, ${time} Uhr."
+
 #. Default: "Section Colors"
 #: collective/frontpage/settings/settings.py
 msgid "frontpage_settings_section_colors_title"
@@ -199,6 +208,21 @@ msgstr ""
 #: collective/frontpage/settings/settings.py
 msgid "frontpage_settings_title"
 msgstr ""
+
+#. Default: "Good afternoon"
+#: collective/frontpage/browser/mixins.py
+msgid "greet_afternoon"
+msgstr "Guten Tag"
+
+#. Default: "Good evening"
+#: collective/frontpage/browser/mixins.py
+msgid "greet_evening"
+msgstr "Guten Abend"
+
+#. Default: "Good morning"
+#: collective/frontpage/browser/mixins.py
+msgid "greet_morning"
+msgstr "Guten Morgen"
 
 #. Default: "Select an available icon."
 #: collective/frontpage/content/item.py

@@ -26,8 +26,10 @@
         </div>
 
         <a class="section-link" href="${context/link_url}"
-          style="background-color: ${context/primary_color}; color: ${python: view.button_text_color(context)}"
-          tal:condition="context/link_title">${context/link_title}</a>
+           style="background-color: ${context/primary_color}; color: ${python: view.button_text_color(context)}"
+           tal:condition="context/link_title">
+          ${context/link_title}
+        </a>
 
       </div>
     </div>

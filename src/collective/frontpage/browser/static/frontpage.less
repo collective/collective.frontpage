@@ -96,9 +96,37 @@
     height: 100%;
 
     .card {
-        background-position: center;
-        background-repeat: no-repeat;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .welcome-text {
+      .welcome-title {
+        text-transform: uppercase;
+        display: block;
+        font-size: 2.5em;
+        font-weight: 400;
+        margin-bottom: 40px;
+        position: relative;
+
+        &:after {
+          content: '';
+          height: 2px;
+          width: 15%;
+          position: absolute;
+          margin: 0 auto;
+          left: 0;
+          right: 0;
+          top: 65px;
+        }
       }
+
+      .welcome-desc {
+        font-size: 18px;
+        font-weight: 100;
+        letter-spacing: 0.05em;
+      }
+    }
 
     .section-text {
       margin-bottom: 40px;

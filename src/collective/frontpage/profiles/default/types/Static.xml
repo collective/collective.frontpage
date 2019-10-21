@@ -49,6 +49,7 @@
   <property name="immediate_view">static_default</property>
   <property name="view_methods">
     <element value="static_default"/>
+    <element value="static_welcome"/>
   </property>
 
   <!-- Method aliases -->
