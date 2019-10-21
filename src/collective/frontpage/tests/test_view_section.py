@@ -56,6 +56,7 @@ class ViewsFunctionalTest(unittest.TestCase):
         api.content.transition(obj=frontpage, transition='publish')
         search = self._create_and_publish(frontpage, 'Search')
         static = self._create_and_publish(frontpage, 'Static')
+        news = self._create_and_publish(frontpage, 'News')
         teaser = self._create_and_publish(frontpage, 'Teaser')
         tiles = self._create_and_publish(frontpage, 'Tiles')
 
@@ -74,16 +75,9 @@ class ViewsFunctionalTest(unittest.TestCase):
         self._logout_with_browser()
 
         logout()
-        self.browser.open(search.absolute_url())
-        self.assertEqual(self.browser.url, frontpage.absolute_url())
-        self.browser.open(static.absolute_url())
-        self.assertEqual(self.browser.url, frontpage.absolute_url())
-        self.browser.open(teaser.absolute_url())
-        self.assertEqual(self.browser.url, frontpage.absolute_url())
-        self.browser.open(tiles.absolute_url())
-        self.assertEqual(self.browser.url, frontpage.absolute_url())
-        self.browser.open(item.absolute_url())
-        self.assertEqual(self.browser.url, frontpage.absolute_url())
+        for i in (search, static, teaser, news, tiles, item):
+            self.browser.open(i.absolute_url())
+            self.assertEqual(self.browser.url, frontpage.absolute_url())
 
     def _login_with_browser(self):
         self.browser.open(self.portal.absolute_url() + "/login_form")

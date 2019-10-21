@@ -23,7 +23,14 @@ class MixinsIntegrationTest(unittest.TestCase):
         self.section = api.content.create(
             self.frontpage, "Teaser", "my-section", "My Teaser"
         )
+        self.section_tiles = api.content.create(
+            self.frontpage, "Tiles", "my-section-tiles", "My Tiles"
+        )
+        self.tiles_item = api.content.create(
+            self.section_tiles, "Item", "my-item", "My Item"
+        )
         self.view = self.section.restrictedTraverse("teaser_default")
+        self.view_tiles = self.section_tiles.restrictedTraverse("tile_cards")
 
     def test_text_color_image(self):
         self.assertTrue(self.view())
@@ -79,6 +86,21 @@ class MixinsIntegrationTest(unittest.TestCase):
         self.assertEqual(
             "#FFF", SectionsViewMixin._contrasting_text_color("rgba(0,0,0, 1)")
         )
+
+    def test_get_item_style(self):
+        self.assertTrue(self.view_tiles())
+        # Item background is not dependend on item.background_color,
+        # but the primary color of it's section!
+        self.section_tiles.primary_color = "rgb(255,255,255)"
+        self.assertEqual(
+            "background-color:rgb(255,255,255);color:#000",
+            self.view_tiles.get_item_style(self.tiles_item))
+        # Item background image is different to the background-color.
+        # It can be set for each item individually.
+        self.tiles_item.background_image = "not null"
+        self.assertEqual(
+            "background-image:url(http://nohost/plone/my-frontpage/my-section-tiles/my-item/@@images/background_image);color:#FFF",  # noqa
+            self.view_tiles.get_item_style(self.tiles_item))
 
 
 class MixinsFunctionalTest(unittest.TestCase):

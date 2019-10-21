@@ -18,7 +18,7 @@ class NewsBase(SectionsViewMixin, BrowserView):
             Language=api.portal.get_current_language(),
         )
         if items:
-            items = [item.getObject() for item in items]
+            items = [item.getObject() for item in items[:3]]
             for item in items:
                 title = item.title
                 description = crop(item.description, 200)
@@ -36,7 +36,7 @@ class NewsBase(SectionsViewMixin, BrowserView):
                     'scaled_image': scaled_image,
                 }
                 results.append(data)
-        return results[:3]
+        return results
 
 
 class NewsDefaultView(NewsBase):
