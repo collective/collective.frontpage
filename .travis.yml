@@ -1,4 +1,8 @@
-dist: trusty
+dist: bionic
+addons:
+  apt:
+    packages:
+      firefox-geckodriver
 language: python
 sudo: false
 cache:
@@ -7,11 +11,11 @@ cache:
   - eggs
   - downloads
 python:
-  - '2.7'
+  - '3.7'
 matrix:
   fast_finish: true
 install:
-  - virtualenv -p $(which python) .
+  - python3.7 -m venv .
   - bin/pip install -r requirements.txt
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True annotate
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True
