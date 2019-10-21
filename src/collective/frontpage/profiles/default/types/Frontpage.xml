@@ -26,6 +26,7 @@
     <element value="Static" />
     <element value="Teaser" />
     <element value="Tiles" />
+    <element value="News" />
   </property>
 
   <!-- Schema, class and security -->

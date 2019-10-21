@@ -1,6 +1,11 @@
 <?xml version="1.0"?>
 <registry>
 
-  <records interface="collective.frontpage.settings.settings.ISettings" prefix="collective.frontpage" />
-
+  <records interface="collective.frontpage.settings.settings.ISettings"
+           prefix="collective.frontpage"/>
+  <record name="plone.default_page_types">
+    <value purge="False">
+      <element>Frontpage</element>
+    </value>
+  </record>
 </registry>

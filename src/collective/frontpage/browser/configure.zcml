@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.frontpage">
 
   <include package="z3c.jbot" file="meta.zcml" />
@@ -10,17 +11,26 @@
 
   <!-- Custom Browser Views -->
 
-  <browser:page
+  <browser:page zcml:condition="installed plonetheme.tokyo"
       name="view"
       for="collective.frontpage.content.frontpage.IFrontpage"
       class=".frontpage.Frontpage"
+      template="templates/frontpage_tokyo.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page zcml:condition="not-installed plonetheme.tokyo"
+      name="view"
+      for="collective.frontpage.content.frontpage.IFrontpage"
+      class=".frontpage.Frontpage"
+      template="templates/frontpage_fallback.pt"
       permission="zope2.View"
       />
 
   <browser:page
-      name="frontpage_macros"
-      for="*"
-      template="templates/frontpage_macros.pt"
+      name="view"
+      for="collective.frontpage.content.item.IItem"
+      class=".item.ItemView"
       permission="zope2.View"
       />
 
@@ -32,7 +42,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.static.IStatic"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".static.StaticDefaultView"
       />
 
   <!-- Teaser -->
@@ -43,34 +53,38 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.teaser.ITeaser"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".teaser.TeaserDefaultView"
+      />
+
+  <!-- News -->
+
+  <browser:page
+      name="news_default"
+      title="News Default"
+      menu="plone_displayviews"
+      for="collective.frontpage.content.news.INews"
+      permission="zope2.View"
+      class=".news.NewsDefaultView"
       />
 
   <!-- Search -->
 
   <browser:page
-      name="search_bar"
-      title="Search Bar"
+      name="search_default"
+      title="Default Search"
       menu="plone_displayviews"
       for="collective.frontpage.content.search.ISearch"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".search.DefaultSearchView"
       />
 
-  <browser:page
-      name="frontpage_section_search"
-      title="Search"
+   <browser:page
+      name="search_minimal"
+      title="Minimal Search Bar"
       menu="plone_displayviews"
       for="collective.frontpage.content.search.ISearch"
       permission="zope2.View"
-      class=".sections.FrontpageSearchView"
-      />
-
-  <browser:page
-      name="frontpage_section_search_clean"
-      for="collective.frontpage.content.search.ISearch"
-      permission="zope2.View"
-      class=".sections.FrontpageSearchCleanView"
+      class=".search.MinimalSearchBarView"
       />
 
   <!-- Tiles -->
@@ -81,7 +95,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.tiles.ITiles"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".tiles.TilesCardView"
       />
 
   <browser:page
@@ -90,7 +104,7 @@
       menu="plone_displayviews"
       for="collective.frontpage.content.tiles.ITiles"
       permission="zope2.View"
-      class=".sections.SectionsView"
+      class=".tiles.TilesCascadeView"
       />
 
 </configure>

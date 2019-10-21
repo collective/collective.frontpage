@@ -19,92 +19,116 @@
   @{property}: @value;
 }
 
-/* Frontpage */
-.frontpage-section {
+@import './cards.less';
 
-  &.full-height {
-    max-height: 100vh;
-    height: 100vh;
+/* Frontpage */
+.editable-section {
+  position: relative;
+
+  &.active {
+    .section-tools {
+      display: inline-block;
+    }
   }
+
+  .section-tools {
+    position: absolute;
+    right: 0;
+    font-size: 18px;
+    margin: 30px;
+    display: none;
+
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+
+      li {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: inherit;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          opacity: 0.6;
+
+          &:hover {
+            color: inherit;
+            opacity: 1;
+          }
+        }
+
+        i {
+          margin: 0;
+          padding: 0;
+          width: inherit;
+          height: inherit;
+          position: absolute;
+          top: 0;
+          left: 0;
+          line-height: 38px;
+
+          .vendor(transition, transform 150ms ease-in-out);
+        }
+      }
+    }
+  }
+}
+
+.frontpage-section {
 
   .section-content {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 180px 60px;
+    padding: 80px 60px;
     text-align: center;
     height: 100%;
 
-    .section-title {
-      box-sizing: border-box;
-      font-family: 'Merriweather Sans', 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      font-size: 56px;
-      font-weight: 700;
-      line-height: 67.2px;
-      margin-bottom: 8px;
-      margin-top: 0;
-      text-align: center;
-      text-transform: uppercase;
+    &.full-height {
+     min-height: 50vh;
     }
 
-    .section-description {
-      box-sizing: border-box;
-      font-family: Merriweather, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      font-size: 16px;
-      font-weight: 300;
-      line-height: 24px;
-      margin-bottom: 48px;
-      margin-top: 0;
-      text-align: center;
-    }
+    .card {
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 
-    .section-image {
-      align-items: center;
-      background-attachment: scroll;
-      background-clip: border-box;
-      background-color: rgba(244, 98, 58, 0.9);
-      background-image: none;
-      background-origin: padding-box;
-      background-position: 0 0;
-      background-position-x: 0;
-      background-position-y: 0;
-      background-repeat: repeat;
-      background-size: auto;
-      bottom: 0;
-      box-sizing: border-box;
-      color: rgb(255, 255, 255);
-      display: flex;
-      flex-direction: column;
+    .section-text {
+      margin-bottom: 40px;
+
+      .section-title {
+        font-size: 56px;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-transform: uppercase;
+      }
+
+      .section-description {
+        font-size: 16px;
+        font-weight: 300;
+        line-height: 24px;
+      }
     }
 
     .section-link {
-      -moz-user-select: none;
-      border-bottom: 0 !important;
-      border-bottom-left-radius: 160px;
-      border-bottom-right-radius: 160px;
-      border-top-left-radius: 160px;
-      border-top-right-radius: 160px;
+      border-radius: 2.5em;
       display: inline-block;
-      font-family: 'Merriweather Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-      font-size: 13.6px;
+      font-size: 12px;
       font-weight: 700;
-      line-height: 20.4px;
-      padding-bottom: 20px;
-      padding-left: 36px;
-      padding-right: 36px;
-      padding-top: 20px;
-      text-align: center;
+      padding: 15px 30px;
       text-decoration: none;
       text-transform: uppercase;
-      transition-delay: 0s, 0s, 0s, 0s, 0s;
-      transition-duration: 0.15s, 0.15s, 0.15s, 0.15s, 0.15s;
-      transition-property: color, background-color, border-color, box-shadow, box-shadow;
-      transition-timing-function: ease-in-out, ease-in-out, ease-in-out, ease-in-out, ease-in-out;
-      vertical-align: middle;
+      margin: 30px;
+      .vendor(transition, opacity 150ms ease-in-out);
 
       &:hover {
-        background-color: #E42727;
-        text-decoration: none;
+        opacity: 0.8;
       }
     }
 
@@ -113,18 +137,29 @@
       flex-wrap: wrap;
 
       .card {
-        padding: 30px;
+        padding: 60px 30px;
         margin: 15px;
+        box-shadow: 0 2px 4px rgba(3, 27, 78, 0.06);
+        cursor: pointer;
 
-        a {
+        a,
+        a:hover,
+        a:focus,
+        a:active {
           color: inherit;
           text-decoration: none;
           border-bottom: 0;
+          text-shadow: none;
+        }
+
+        .card-icon {
+          font-size: 30px;
+          margin-bottom: 15px;
         }
 
         .card-title {
-          font-size: 18px;
-          margin-bottom: 15px;
+          font-size: 24px;
+          margin-bottom: 18px;
           font-weight: 600;
         }
 

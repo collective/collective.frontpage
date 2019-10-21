@@ -1,1 +1,0 @@
-<div metal:use-macro="context/@@frontpage_section_search/section_content" />

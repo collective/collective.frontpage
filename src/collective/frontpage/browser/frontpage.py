@@ -1,28 +1,39 @@
 # -*- coding: utf-8 -*-
 
-from collective.frontpage.browser.mixins import SectionsViewMixin
+from lxml import html
+from plone import api
+from plone.memoize.view import memoize
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from BeautifulSoup import BeautifulSoup
-
-import re
 
 
-class Frontpage(SectionsViewMixin, BrowserView):
+class Frontpage(BrowserView):
 
-    template = ViewPageTemplateFile("templates/frontpage.pt")
+    section_classname = 'frontpage-section'
 
-    def __call__(self):
-        return self.template()
+    def is_anonymous(self):
+        return api.user.is_anonymous()
 
-    def _render_sections(self):
+    @memoize
+    def get_sections(self):
         contents = self.context.listFolderContents()
-        output = str()
+        section_list = list()
         for section in contents:
-            parsed_html = BeautifulSoup(section())
-            output += str(
-                parsed_html.body.find(
-                    'div', attrs={'class': re.compile('^frontpage-section*')}
+            section_url = section.absolute_url()
+            section_view = section.unrestrictedTraverse(section.getLayout())
+            section_view.request.set('from_fp', True)
+            section_view.request.set('ajax_load', 'True')
+            tree = html.fromstring(section_view())
+            parsed_html = tree.xpath(
+                '//div[contains(@class, "{0}")]'.format(
+                    self.section_classname
                 )
             )
-        return output
+            for elem in parsed_html:
+                section_list.append(
+                    {
+                        'url': section_url,
+                        'html': html.tostring(elem),
+                        'style': section_view.get_style(),
+                    }
+                )
+        return section_list

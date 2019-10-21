@@ -1,9 +1,26 @@
 # -*- coding: utf-8 -*-
 
+from plone import api
+
 import ast
 
 
 class SectionsViewMixin(object):
+
+    def __call__(self):
+        self.portal = api.portal.get()
+        self.contents = self.context.listFolderContents()
+        if not self._redirect_anonymous():
+            return self.template()
+
+    def _redirect_anonymous(self):
+        from_fp = self.request.get('from_fp', False)
+        if not from_fp and api.user.is_anonymous():
+            parent = self.context.aq_parent.absolute_url()
+            self.request.response.redirect(parent)
+            return True
+        else:
+            return False
 
     def text_color(self, section):
         if section.background_image:
@@ -13,6 +30,29 @@ class SectionsViewMixin(object):
 
     def button_text_color(self, section):
         return self._contrasting_text_color(section.primary_color)
+
+    def get_style(self):
+        bg_image = 'background-image:url({0}/@@images/background_image)'.format(  # noqa: 501
+            self.context.absolute_url()
+        )
+        bg_color = 'background-color:{0}'.format(
+            self.context.background_color
+        )
+        text_color = 'color:{0}'.format(
+            self.text_color(self.context)
+        )
+        return (bg_image if self.context.background_image else bg_color) + ';' + text_color  # noqa: 501
+
+    def get_item_style(self, item):
+        bg_image = 'background-image:url({0}/@@images/background_image)'.format(
+            item.absolute_url()
+        )
+        bg_color = 'background-color:{0}'.format(
+            self.context.primary_color
+        )
+        text_color_value = "#FFF" if item.background_image else self.button_text_color(self.context)  # noqa: 501
+        text_color = 'color:{0}'.format(text_color_value)
+        return (bg_image if item.background_image else bg_color) + ';' + text_color  # noqa: 501
 
     @staticmethod
     def _contrasting_text_color(value):

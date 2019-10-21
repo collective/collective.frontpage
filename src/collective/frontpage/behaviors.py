@@ -2,14 +2,37 @@
 
 from collective.frontpage import _
 from plone.autoform.interfaces import IFormFieldProvider
+from plone.namedfile.field import NamedBlobImage
 from plone.supermodel import model
 from zope import schema
-from plone.namedfile.field import NamedBlobImage
 from zope.interface import alsoProvides
 from zope.interface import Interface
 
 
-class ISectionFields(model.Schema):
+class IImageFields(model.Schema):
+
+    background_image = NamedBlobImage(
+        title=_(u"Background Image"),
+        description=_(
+            u"This sets a background image to an item. "
+            u"Make sure to use a semi-transparent or fully transparent "
+            u"background-color to see the image."
+        ),
+        required=False,
+    )
+
+
+alsoProvides(IImageFields, IFormFieldProvider)
+
+
+class IImageFieldsMarker(Interface):
+    """
+    Marker interface that will be provided by instances using the
+    IImageFields behavior.
+    """
+
+
+class IColorFields(model.Schema):
 
     background_color = schema.Choice(
         title=_(u"Background Color"),
@@ -26,33 +49,23 @@ class ISectionFields(model.Schema):
     primary_color = schema.Choice(
         title=_(u"Primary Color"),
         default=u"#0083BE",
-        description=_(u"The primary color used for icons and buttons."),
+        description=_(u"The primary color used for text, icons and buttons."),
         vocabulary="collective.frontpage.SectionColors",
         required=True,
     )
 
-    background_image = NamedBlobImage(
-        title=_(u"Background Image"),
-        description=_(
-            u"This sets a fullscreen-background to the section. "
-            u"Make sure to use a semi-transparent or fully transparent "
-            u"background-color to see the image."
-        ),
-        required=False,
-    )
+
+alsoProvides(IColorFields, IFormFieldProvider)
 
 
-alsoProvides(ISectionFields, IFormFieldProvider)
-
-
-class ISectionFieldsMarker(Interface):
+class IColorFieldsMarker(Interface):
     """
     Marker interface that will be provided by instances using the
-    ISectionFields behavior.
+    IColorFields behavior.
     """
 
 
-class ISectionLinkItem(model.Schema):
+class ILinkFields(model.Schema):
 
     link_url = schema.URI(
         title=_(u"Link URL"),
@@ -65,11 +78,11 @@ class ISectionLinkItem(model.Schema):
     )
 
 
-alsoProvides(ISectionLinkItem, IFormFieldProvider)
+alsoProvides(ILinkFields, IFormFieldProvider)
 
 
-class ISectionLinkItemMarker(Interface):
+class ILinkFieldsMarker(Interface):
     """
     Marker interface that will be provided by instances using the
-    ISectionLinkItem behavior.
+    ILinkFields behavior.
     """

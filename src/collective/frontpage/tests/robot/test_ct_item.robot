@@ -57,12 +57,12 @@ a logged-in site administrator
 
 an add Item form
   ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  Create content  type=Tiles  container=${uid}  id=my-section  title=My Section
   Go To  ${PLONE_URL}/my-frontpage/my-section/++add++Item
 
 a Item 'My Item'
   ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  ${uid} =  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  ${uid} =  Create content  type=Tiles  container=${uid}  id=my-section  title=My Section
   Create content  type=Item  container=${uid}  id=my-item  title=My Item
 
 # --- WHEN -------------------------------------------------------------------
@@ -75,16 +75,16 @@ I submit the form
 
 I go to the Item view
   Go To  ${PLONE_URL}/my-frontpage/my-section/my-item
-  Wait until page contains  Site Map
+  Wait until page contains  Home
 
 
 # --- THEN -------------------------------------------------------------------
 
 a Item with the title '${title}' has been created
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
   Page should contain  Item created
 
 I can see the Item title '${title}'
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}

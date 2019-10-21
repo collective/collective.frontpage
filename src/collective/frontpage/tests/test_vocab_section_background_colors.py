@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 from collective.frontpage import _
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
+from collective.frontpage.vocabularies.section_colors import SectionColors
+from collective.frontpage.vocabularies.section_colors import VocabItem
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.interfaces import IVocabularyTokenized
-from collective.frontpage.vocabularies.section_colors import SectionColors
-from collective.frontpage.vocabularies.section_colors import VocabItem
 
-import unittest
 import copy
+import unittest
 
 
 class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
@@ -33,12 +31,12 @@ class SectionBackgroundColorsIntegrationTest(unittest.TestCase):
 
     def test_create_simple_terms(self):
         items = SectionColors._get_colors_from_registry()
-        # Should return 8 items
-        self.assertEqual(len(SectionColors._create_simple_terms(items)), 8)
-        # Should return 8 items again, because of duplicates
+        # Should return 142 items
+        self.assertEqual(len(SectionColors._create_simple_terms(items)), 142)
+        # Should return 142 items again, because of duplicates
         icol = copy.deepcopy(items[0])
         items.append(icol)
-        self.assertEqual(len(SectionColors._create_simple_terms(items)), 8)
+        self.assertEqual(len(SectionColors._create_simple_terms(items)), 142)
 
     def test_vocab_section_background_colors(self):
 

@@ -32,19 +32,23 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
+
     <element value="plone.app.content.interfaces.INameFromTitle"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-    <element value="collective.frontpage.ISectionFields"/>
+
+    <element value="collective.frontpage.IColorFields"/>
+    <element value="collective.frontpage.IImageFields"/>
+
   </property>
 
   <!-- View information -->
   <property name="add_view_expr">string:${folder_url}/++add++Search</property>
-  <property name="default_view">search_bar</property>
+  <property name="default_view">search_default</property>
   <property name="default_view_fallback">False</property>
-  <property name="immediate_view">search_bar</property>
+  <property name="immediate_view">search_default</property>
   <property name="view_methods">
-    <element value="search_bar"/>
-    <element value="frontpage_section_search"/>
+    <element value="search_default"/>
+    <element value="search_minimal"/>
   </property>
 
   <!-- Method aliases -->

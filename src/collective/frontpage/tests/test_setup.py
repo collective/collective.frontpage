@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 """Setup tests for this package."""
 
-from collective.frontpage.testing import (
-    COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING,
-)  # noqa: 501
+from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
@@ -31,6 +29,11 @@ class TestSetup(unittest.TestCase):
         from plone.browserlayer import utils
 
         self.assertIn(ICollectiveFrontpageLayer, utils.registered_layers())
+
+    def test_frontpage_in_default_page_types(self):
+        values = api.portal.get_registry_record("plone.default_page_types")
+        self.assertIn('Frontpage', values)
+        self.assertTrue(len(values) > 1)
 
 
 class TestUninstall(unittest.TestCase):

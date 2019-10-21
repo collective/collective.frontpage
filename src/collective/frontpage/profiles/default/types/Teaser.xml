@@ -11,7 +11,7 @@
 
   <property
       i18n:translate=""
-      name="description">A teaser section for a Frontpage. Can contain Items.</property>
+      name="description">A teaser section for a Frontpage.</property>
 
   <property name="allow_discussion">False</property>
   <property name="factory">Teaser</property>
@@ -21,9 +21,7 @@
   <!-- Hierarchy control -->
   <property name="global_allow">False</property>
   <property name="filter_content_types">True</property>
-  <property name="allowed_content_types">
-    <element value="Item" />
-  </property>
+  <property name="allowed_content_types"></property>
 
   <!-- Schema, class and security -->
   <property name="add_permission">collective.frontpage.AddSection</property>
@@ -34,10 +32,14 @@
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
+
     <element value="plone.app.content.interfaces.INameFromTitle"/>
     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-    <element value="collective.frontpage.ISectionFields"/>
-    <element value="collective.frontpage.ISectionLinkItem"/>
+
+    <element value="collective.frontpage.ILinkFields"/>
+    <element value="collective.frontpage.IColorFields"/>
+    <element value="collective.frontpage.IImageFields"/>
+
   </property>
 
   <!-- View information -->

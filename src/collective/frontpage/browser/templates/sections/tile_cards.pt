@@ -1,0 +1,49 @@
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
+      i18n:domain="collective.frontpage"
+      lang="en"
+      tal:omit-tag="">
+
+<head>
+  <metal:block fill-slot="style_slot">
+    <?python from collective.frontpage.css import css_date;  ?>
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-${python:css_date}.css">
+  </metal:block>
+</head>
+
+<body>
+  <metal:main fill-slot="main">
+
+    <div class="frontpage-section" metal:define-macro="tile_cards">
+      <div class="section-content" tal:attributes="style view/get_style">
+
+        <div class="section-text">
+          <h2 class="section-title">${context/title}</h2>
+          <p class="section-description" tal:condition="context/description">${context/description}</p>
+        </div>
+
+        <div class="tiles cards" tal:define="items view/contents|nothing" tal:condition="items">
+          <tal:repeat tal:repeat="item items">
+            <div class="card" style="${python: view.get_item_style(item)}">
+              <div class="card-icon">
+                <i class="glyphicon glyphicon-${item/icon}"></i>
+              </div>
+              <div class="card-title">${item/title|nothing}</div>
+              <div class="card-description">${item/description|nothing}</div>
+              <tal:condition tal:condition="item/link_url|nothing">
+                <a class="section-link" href="${item/link_url}" title="${item/link_title}">Read more...</a>
+              </tal:condition>
+            </div>
+          </tal:repeat>
+        </div>
+
+      </div>
+    </div>
+
+  </metal:main>
+</body>
+
+</html>

@@ -60,11 +60,11 @@ an add Frontpage form
 
 an add Section form
   Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  Go To  ${PLONE_URL}/my-frontpage/++add++Section
+  Go To  ${PLONE_URL}/my-frontpage/++add++Static
 
 a Section 'My Section'
   ${uid} =  Create content  type=Frontpage  id=my-frontpage  title=My Frontpage
-  Create content  type=Section  container=${uid}  id=my-section  title=My Section
+  Create content  type=Static  container=${uid}  id=my-section  title=My Section
 
 # --- WHEN -------------------------------------------------------------------
 
@@ -76,16 +76,16 @@ I submit the form
 
 I go to the Section view
   Go To  ${PLONE_URL}/my-frontpage/my-section
-  Wait until page contains  Site Map
+  Wait until page contains  Home
 
 
 # --- THEN -------------------------------------------------------------------
 
 a Section with the title '${title}' has been created
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
   Page should contain  Item created
 
 I can see the Section title '${title}'
-  Wait until page contains  Site Map
+  Wait until page contains  Home
   Page should contain  ${title}
