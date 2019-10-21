@@ -4,16 +4,11 @@ from lxml import html
 from plone import api
 from plone.memoize.view import memoize
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
 class Frontpage(BrowserView):
 
-    template = ViewPageTemplateFile("templates/frontpage.pt")
-
-    def __call__(self):
-        self.section_classname = 'frontpage-section'
-        return self.template()
+    section_classname = 'frontpage-section'
 
     def is_anonymous(self):
         return api.user.is_anonymous()

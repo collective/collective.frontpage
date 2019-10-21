@@ -14,6 +14,8 @@ from plone.testing import z2
 from zope.interface import alsoProvides
 
 import collective.frontpage
+import collective.sidebar
+import plonetheme.tokyo
 
 
 def set_browserlayer(request):
@@ -66,6 +68,8 @@ class CollectiveFrontpageLayer(PloneSandboxLayer):
         request = aq_get(app, "REQUEST")
         request.environ["HTTP_ACCEPT_LANGUAGE"] = "de"
         self.loadZCML(package=collective.frontpage)
+        self.loadZCML(package=collective.sidebar)
+        self.loadZCML(package=plonetheme.tokyo)
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, "collective.frontpage:default")

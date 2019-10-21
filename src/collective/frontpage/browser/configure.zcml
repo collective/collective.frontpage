@@ -2,6 +2,7 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.frontpage">
 
   <include package="z3c.jbot" file="meta.zcml" />
@@ -10,10 +11,19 @@
 
   <!-- Custom Browser Views -->
 
-  <browser:page
+  <browser:page zcml:condition="installed plonetheme.tokyo"
       name="view"
       for="collective.frontpage.content.frontpage.IFrontpage"
       class=".frontpage.Frontpage"
+      template="templates/frontpage_tokyo.pt"
+      permission="zope2.View"
+      />
+
+  <browser:page zcml:condition="not-installed plonetheme.tokyo"
+      name="view"
+      for="collective.frontpage.content.frontpage.IFrontpage"
+      class=".frontpage.Frontpage"
+      template="templates/frontpage_fallback.pt"
       permission="zope2.View"
       />
 

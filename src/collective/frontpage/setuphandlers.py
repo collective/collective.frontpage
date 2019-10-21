@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from io import BytesIO
 from PIL import Image
 from PIL import ImageColor
 from PIL import ImageDraw
@@ -7,8 +8,6 @@ from plone.namedfile.file import NamedBlobImage
 from Products.CMFPlone.interfaces import INonInstallable
 from random import choice
 from zope.interface import implementer
-
-import cStringIO
 
 
 @implementer(INonInstallable)
@@ -146,7 +145,7 @@ def _create_lead_image(size=(800, 450), color="blue"):
         )
 
     # 'Save' the file.
-    sio = cStringIO.StringIO()
+    sio = BytesIO()
     im.save(sio, format="PNG")
     sio.seek(0)
 
