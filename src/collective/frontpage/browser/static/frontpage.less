@@ -82,11 +82,6 @@
 
 .frontpage-section {
 
-  // &.full-height {
-  //   max-height: 100vh;
-  //   height: 100vh;
-  // }
-
   .section-content {
     background-position: center;
     background-repeat: no-repeat;
@@ -94,6 +89,10 @@
     padding: 80px 60px;
     text-align: center;
     height: 100%;
+
+    &.full-height {
+     min-height: 50vh;
+    }
 
     .card {
         background-position: center;
@@ -125,7 +124,7 @@
       padding: 15px 30px;
       text-decoration: none;
       text-transform: uppercase;
-
+      margin: 30px;
       .vendor(transition, opacity 150ms ease-in-out);
 
       &:hover {

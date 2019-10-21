@@ -17,8 +17,8 @@
 <body>
   <metal:main fill-slot="main">
 
-    <div class="frontpage-section full-height" metal:define-macro="teaser_default">
-      <div class="section-content" tal:attributes="style view/get_style">
+    <div class="frontpage-section" metal:define-macro="teaser_default">
+      <div class="section-content full-height" tal:attributes="style view/get_style">
 
         <div class="section-text">
           <h2 class="section-title">${context/title}</h2>
