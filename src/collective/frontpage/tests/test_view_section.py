@@ -2,10 +2,11 @@
 from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_FUNCTIONAL_TESTING  # noqa: 501
 from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTING  # noqa: 501
 from plone import api
-from plone.app.testing import login, SITE_OWNER_PASSWORD
+from plone.app.testing import login
 from plone.app.testing import logout
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
+from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
 from plone.testing._z2_testbrowser import Browser
 
@@ -83,7 +84,7 @@ class ViewsFunctionalTest(unittest.TestCase):
         self.browser.open(self.portal.absolute_url() + "/login_form")
         self.browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
         self.browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD
-        self.browser.getControl(name='submit').click()
+        self.browser.getControl(name='buttons.login').click()
 
     def _logout_with_browser(self):
         self.browser.open(self.portal.absolute_url() + '/' + 'logout')

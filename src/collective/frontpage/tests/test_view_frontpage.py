@@ -7,6 +7,7 @@ from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
 from plone.testing._z2_testbrowser import Browser
+from Products.CMFPlone.utils import get_installer
 
 import transaction
 import unittest
@@ -74,7 +75,7 @@ class ViewsFunctionalTest(unittest.TestCase):
         from Testing.ZopeTestCase import installProduct
         installProduct(self.portal.getPhysicalRoot(), 'collective.sidebar')
         installProduct(self.portal.getPhysicalRoot(), 'plonetheme.tokyo')
-        self.installer = api.portal.get_tool('portal_quickinstaller')
+        self.installer = get_installer(self.portal)
         self.installer.installProduct('plonetheme.tokyo')
         transaction.commit()
 
@@ -82,7 +83,7 @@ class ViewsFunctionalTest(unittest.TestCase):
         self.browser.open(self.portal.absolute_url() + "/login_form")
         self.browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
         self.browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD
-        self.browser.getControl(name='submit').click()
+        self.browser.getControl(name='buttons.login').click()
 
     def _logout_with_browser(self):
         self.browser.open(self.portal.absolute_url() + '/' + 'logout')
