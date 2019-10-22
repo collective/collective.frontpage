@@ -19,9 +19,6 @@ matrix:
 before_install:
   - export DISPLAY=:99.0
   - firefox -v
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
-  - tar -xzf geckodriver-v0.20.1-linux64.tar.gz -C bin
-  - export PATH=$(pwd)/bin:$PATH
   - virtualenv .
   - bin/pip install pathlib2
   - bin/pip3 install -f https://extras.wxpython.org/wxPython4/extras/linux/gtk3/ubuntu-18.04/wxPython-4.0.6-cp37-cp37m-linux_x86_64.whl -vvv wxPython
@@ -29,6 +26,9 @@ before_install:
 install:
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True annotate
   - bin/buildout -N buildout:download-cache=downloads code-analysis:return-status-codes=True
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
+  - tar -xzf geckodriver-v0.20.1-linux64.tar.gz -C bin
+  - export PATH=$(pwd)/bin:$PATH
 
 script:
   - bin/code-analysis
