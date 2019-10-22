@@ -62,3 +62,4 @@ Gruntfile.js
 node_modules/
 package.json
 temp_resources
+/pyvenv.cfg
