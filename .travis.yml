@@ -32,7 +32,7 @@ install:
 script:
   - bin/code-analysis
   - bin/test
-  - export ROBOTSUITE_PREFIX=ONLYROBOT && xvfb-run bin/test -t ONLYROBOT --all
+  - export ROBOTSUITE_PREFIX=ONLYROBOT && bin/test -t ONLYROBOT --all
 
 after_success:
   - bin/createcoverage
