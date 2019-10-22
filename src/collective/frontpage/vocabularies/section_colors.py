@@ -77,7 +77,7 @@ class SectionColors(object):
                             title=item.value
                         )
                         terms.append(term)
-            except UnicodeEncodeError:
+            except UnicodeEncodeError:  # Only happens in Python2
                 logger.exception(
                     "Could not use one of your custom colors "
                     "-> Please check the "
