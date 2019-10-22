@@ -9,7 +9,11 @@ class SearchBase(SectionsViewMixin, BrowserView):
     """SearchBase base class"""
 
 
-class SearchBarView(SearchBase):
-    """SearchBarView base class"""
+class MinimalSearchBarView(SearchBase):
 
-    template = ViewPageTemplateFile("templates/sections/search_bar.pt")
+    template = ViewPageTemplateFile("templates/sections/search_minimal.pt")
+
+
+class DefaultSearchView(SearchBase):
+
+    template = ViewPageTemplateFile('templates/sections/search_default.pt')
