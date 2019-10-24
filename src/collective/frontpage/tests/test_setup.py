@@ -5,6 +5,7 @@ from collective.frontpage.testing import COLLECTIVE_FRONTPAGE_INTEGRATION_TESTIN
 from plone import api
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from Products.CMFPlone.utils import get_installer
 
 import unittest
 
@@ -17,7 +18,7 @@ class TestSetup(unittest.TestCase):
     def setUp(self):
         """Custom shared utility setup for tests."""
         self.portal = self.layer["portal"]
-        self.installer = api.portal.get_tool("portal_quickinstaller")
+        self.installer = get_installer(self.portal)
 
     def test_product_installed(self):
         """Test if collective.frontpage is installed."""
@@ -42,7 +43,7 @@ class TestUninstall(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer["portal"]
-        self.installer = api.portal.get_tool("portal_quickinstaller")
+        self.installer = get_installer(self.portal)
         roles_before = api.user.get_roles(TEST_USER_ID)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
         self.installer.uninstallProducts(["collective.frontpage"])

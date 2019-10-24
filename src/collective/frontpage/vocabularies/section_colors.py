@@ -44,9 +44,11 @@ class SectionColors(object):
                 items.append(VocabItem(split[1].strip(), split[0].strip()))
             except IndexError:
                 logger.exception(
-                    "Could not use color {color} -> Please check the settings to make "
+                    "Could not use color {color} -> "
+                    "Please check the settings to make "
                     "your custom color available! "
-                    "Each line should contain a Pipe Symbol".format(color=color)
+                    "Each line should contain a "
+                    "Pipe Symbol".format(color=color)
                 )
         return items
 
@@ -58,24 +60,27 @@ class SectionColors(object):
             try:
                 if item:
                     if item.token in [x.value for x in terms]:
-                            logger.warning(
-                                "Could not add {color} ({color_hex}), "
-                                "because it is already defined "
-                                "as {duplicate}({duplicate_hex}).".format(
-                                    color=item.value,
-                                    duplicate=x.title,
-                                    color_hex=item.token,
-                                    duplicate_hex=x.token
-                                )
+                        logger.warning(
+                            "Could not add {color} ({color_hex}), "
+                            "because it is already defined "
+                            "as {duplicate}({duplicate_hex}).".format(
+                                color=item.value,
+                                duplicate=item.value,
+                                color_hex=item.token,
+                                duplicate_hex=str(item.token)
                             )
+                        )
                     else:
                         term = SimpleTerm(
-                            value=item.token, token=str(item.token), title=item.value
+                            value=item.token,
+                            token=str(item.token),
+                            title=item.value
                         )
                         terms.append(term)
-            except UnicodeEncodeError:
+            except UnicodeEncodeError:  # Only happens in Python2
                 logger.exception(
-                    "Could not use one of your custom colors -> Please check the "
+                    "Could not use one of your custom colors "
+                    "-> Please check the "
                     "settings to make your custom color available! "
                     "Please don't use special characters in RGB-Values!"
                 )
