@@ -1,0 +1,45 @@
+<html xmlns:metal="http://xml.zope.org/namespaces/metal"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns="http://www.w3.org/1999/xhtml"
+      i18n:domain="collective.frontpage"
+      lang="en"
+      tal:omit-tag="">
+
+<head>
+  <metal:block fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css" href="++resource++collective.frontpage/frontpage-compiled-2019-06-27.css">
+  </metal:block>
+</head>
+
+<body>
+  <metal:main fill-slot="main">
+
+    <div class="frontpage-section full-height" metal:define-macro="teaser_default">
+      <div class="teaser-background" tal:condition="video_source" tal:define="video_source context/video_url">
+          <div class="teaser-video-wrapper">
+            <video id="teaser-video" poster="context/video_poster_url|nothing" preload="metadata" autoplay="" muted="" loop="" src="${video_source}">
+                Sorry, your browser doesn't support embedded videos,
+                but don't worry, you can <a href="${video_source}">download it</a>
+                and watch it with your favorite video player!
+            </video>
+          </div>
+        </div>
+      <div class="section-content full-height" tal:attributes="style view/get_style">
+        <div class="section-text">
+          <h2 class="section-title">${context/title}</h2>
+          <p class="section-description" tal:condition="context/description">${context/description}</p>
+        </div>
+
+        <a class="section-link" tal:condition="context/link_title"
+          style="background-color: ${context/primary_color}; color: ${python: view.button_text_color(context)}"
+          href="${context/link_url}">${context/link_title}</a>
+
+      </div>
+    </div>
+
+  </metal:main>
+</body>
+
+</html>
