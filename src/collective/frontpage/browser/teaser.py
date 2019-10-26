@@ -13,3 +13,9 @@ class TeaserDefaultView(TeaserBase):
     """TeaserDefaultView base class"""
 
     template = ViewPageTemplateFile("templates/sections/teaser_default.pt")
+
+
+class TeaserVideoView(TeaserBase):
+    """TeaserDefaultView base class"""
+
+    template = ViewPageTemplateFile("templates/sections/teaser_video.pt")
