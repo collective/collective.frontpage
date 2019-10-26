@@ -61,13 +61,9 @@ class SectionColors(object):
                 if item:
                     if item.token in [x.value for x in terms]:
                         logger.warning(
-                            "Could not add {color} ({color_hex}), "
-                            "because it is already defined "
-                            "as {duplicate}({duplicate_hex}).".format(
+                            "Could not add {color} ({color_hex}).".format(
                                 color=item.value,
-                                duplicate=item.value,
                                 color_hex=item.token,
-                                duplicate_hex=str(item.token)
                             )
                         )
                     else:

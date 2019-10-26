@@ -39,6 +39,7 @@
     <element value="collective.frontpage.ILinkFields"/>
     <element value="collective.frontpage.IColorFields"/>
     <element value="collective.frontpage.IImageFields"/>
+    <element value="collective.frontpage.IVideoFields"/>
 
   </property>
 
